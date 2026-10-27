@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GRR9Q26Z5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-8GRR9Q26Z5');
+  </script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Integration Flows · Taha Metin</title>
+  <meta name="description" content="Case study: webMethods flow services routing data to Java backends, Oracle and a decision engine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Taha Metin</a>
+      <nav aria-label="Main">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="cs-head">
+      <div class="eyebrow">Case study · Softtech</div>
+      <h1>Integration flows to the decision engine</h1>
+      <p class="lede">webMethods flow services that take data from newly built services and route it to Java backend
+        services, either to be stored in Oracle or processed by the decision engine.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Software Engineer</dd></div>
+        <div><dt>Stack</dt><dd>webMethods (Software AG), Java, Spring Boot, Oracle</dd></div>
+        <div><dt>Interfaces</dt><dd>REST, SOAP</dd></div>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>Context</h2>
+      <p>New services were being introduced for banking products, and their data had to reach existing Java backends.
+        Some of it needed to be persisted; some of it fed the decision engine. webMethods sits between the two as the
+        integration layer.</p>
+
+      <div class="flow" role="img" aria-label="New service to webMethods flow service to Java backend, then to Oracle DB or the decision engine">
+        <span>New service</span><i>→</i>
+        <span>webMethods flow service</span><i>→</i>
+        <span>Java / Spring Boot backend</span><i>→</i>
+        <span>Oracle DB</span><i>or</i>
+        <span>Decision engine</span>
+      </div>
+
+      <h2>My role</h2>
+      <p>I built the webMethods flow services and worked on the Java services on the receiving end, so I owned the
+        path from consuming the data to handing it over to persistence or decisioning.</p>
+
+      <h2>What I did</h2>
+      <ul>
+        <li>Built flow services that consume data from the new services and map it to what the backends expect.</li>
+        <li>Routed each message to the right Java backend service over REST or SOAP.</li>
+        <li>Developed and maintained the Spring Boot microservices that persist the data in Oracle or pass it to the
+          decision engine.</li>
+        <li>Investigated and fixed defects along the flow and resolved related incident records.</li>
+      </ul>
+
+      <h2>Outcome</h2>
+      <p>New services could feed the existing backends and the decision engine through a single integration layer,
+        without each one wiring itself directly to every backend.</p>
+
+      <p class="note">Details are generalised to respect client confidentiality.</p>
+    </article>
+
+    <div class="next">
+      <a href="java-21-migration.html">← Java 21 migration</a>
+      <a href="data-migration.html">Next: Customer data migration →</a>
+    </div>
+  </main>
+</body>
+
+</html>

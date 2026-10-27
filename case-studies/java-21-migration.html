@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GRR9Q26Z5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-8GRR9Q26Z5');
+  </script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Java 21 Migration · Taha Metin</title>
+  <meta name="description" content="Case study: migrating banking microservices from Java 8 and 17 to Java 21." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Taha Metin</a>
+      <nav aria-label="Main">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="cs-head">
+      <div class="eyebrow">Case study · Softtech</div>
+      <h1>Java 21 migration for banking microservices</h1>
+      <p class="lede">Moving multiple production microservices from Java 8 and 17 to Java 21, together with Spring
+        Boot upgrades and Maven/Gradle dependency updates.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Software Engineer, contributor</dd></div>
+        <div><dt>Stack</dt><dd>Java 8 / 17 → 21, Spring Boot, Maven, Gradle</dd></div>
+        <div><dt>Delivery</dt><dd>ScoreTFS CI/CD, XL Release</dd></div>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>Context</h2>
+      <p>The services behind several banking and financial products were running on a mix of Java 8 and Java 17.
+        Older runtimes meant older framework versions, ageing dependencies and diverging build setups across teams.
+        The platform team started infrastructure work to bring services onto Java 21.</p>
+
+      <h2>My role</h2>
+      <p>I contributed to the migration infrastructure work and migrated multiple microservices myself, from the build
+        files through to a successful pipeline run.</p>
+
+      <h2>What I did</h2>
+      <ul>
+        <li>Raised the Java version of each service to 21 and upgraded Spring Boot to a compatible release.</li>
+        <li>Updated Maven and Gradle dependencies, replacing or bumping libraries that did not support the new runtime.</li>
+        <li>Fixed the compile errors and failing tests the upgrade surfaced, keeping the services' behaviour unchanged.</li>
+        <li>Verified each service through the CI/CD pipeline before handing it to release orchestration in XL Release.</li>
+      </ul>
+
+      <h2>Outcome</h2>
+      <p>The migrated services run on a current, long-term-supported Java version with up-to-date framework and
+        dependency versions, which makes future upgrades and security patching simpler.</p>
+
+      <p class="note">Details are generalised to respect client confidentiality.</p>
+    </article>
+
+    <div class="next">
+      <a href="../index.html#work">← All case studies</a>
+      <a href="integration-flow.html">Next: Integration flows →</a>
+    </div>
+  </main>
+</body>
+
+</html>

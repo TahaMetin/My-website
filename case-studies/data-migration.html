@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GRR9Q26Z5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-8GRR9Q26Z5');
+  </script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Data Migration · Taha Metin</title>
+  <meta name="description" content="Case study: IBM DataStage ETL jobs migrating customer data into Oracle databases." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/site.css" />
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Taha Metin</a>
+      <nav aria-label="Main">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="cs-head">
+      <div class="eyebrow">Case study · Softtech</div>
+      <h1>Customer data migration with DataStage</h1>
+      <p class="lede">ETL jobs in IBM DataStage that move customer data from bank databases into Softtech's Oracle
+        databases.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Software Engineer</dd></div>
+        <div><dt>Stack</dt><dd>IBM DataStage, Oracle Database, SQL</dd></div>
+        <div><dt>Type</dt><dd>ETL, data migration</dd></div>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>Context</h2>
+      <p>Customer data held in the bank's own databases had to be brought into Softtech's Oracle databases so the
+        services built on top of them could use it.</p>
+
+      <div class="flow" role="img" aria-label="Bank databases to DataStage ETL jobs to Softtech Oracle databases">
+        <span>Bank databases</span><i>→</i>
+        <span>DataStage: extract · transform · load</span><i>→</i>
+        <span>Softtech Oracle DB</span>
+      </div>
+
+      <h2>My role</h2>
+      <p>I developed the DataStage ETL jobs for the migration.</p>
+
+      <h2>What I did</h2>
+      <ul>
+        <li>Built jobs that extract customer records from the source bank databases.</li>
+        <li>Transformed the data to fit the target Oracle schema.</li>
+        <li>Loaded it into the Softtech Oracle databases and checked the results with SQL.</li>
+      </ul>
+
+      <h2>Outcome</h2>
+      <p>Customer data became available in the target Oracle databases for the services that depend on it.</p>
+
+      <p class="note">Details are generalised to respect client confidentiality. No customer data is shown.</p>
+    </article>
+
+    <div class="next">
+      <a href="integration-flow.html">← Integration flows</a>
+      <a href="code-quality.html">Next: Code quality →</a>
+    </div>
+  </main>
+</body>
+
+</html>
