@@ -1,37 +1,23 @@
 :root {
-  --ink: #0f172a;
-  --muted: #475569;
-  --navy: #1f3a5f;
-  --navy-soft: #e8eef6;
-  --bg: #ffffff;
-  --surface: #f6f8fb;
-  --line: #e2e8f0;
-  --ok: #15803d;
-  --on-navy: #ffffff;
-  --navy-hover: #172d4a;
-  --top-bg: rgba(255,255,255,.95);
-  --shadow: rgba(15,23,42,.06);
+  /* light-dark() picks a value from the active color-scheme, set below */
+  color-scheme: light dark;
+  --ink: light-dark(#0f172a, #e2e8f0);
+  --muted: light-dark(#475569, #94a3b8);
+  --navy: light-dark(#1f3a5f, #8fb3e0);
+  --navy-soft: light-dark(#e8eef6, #1a2a40);
+  --bg: light-dark(#ffffff, #0b1220);
+  --surface: light-dark(#f6f8fb, #111a2b);
+  --line: light-dark(#e2e8f0, #1f2b3d);
+  --ok: light-dark(#15803d, #22c55e);
+  --on-navy: light-dark(#ffffff, #0b1220);
+  --navy-hover: light-dark(#172d4a, #a9c5ea);
+  --top-bg: light-dark(rgba(255,255,255,.95), rgba(11,18,32,.95));
+  --shadow: light-dark(rgba(15,23,42,.06), rgba(0,0,0,.4));
   --radius: 8px;
   --max: 960px;
-  color-scheme: light dark;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #e2e8f0;
-    --muted: #94a3b8;
-    --navy: #8fb3e0;
-    --navy-soft: #1a2a40;
-    --bg: #0b1220;
-    --surface: #111a2b;
-    --line: #1f2b3d;
-    --ok: #22c55e;
-    --on-navy: #0b1220;
-    --navy-hover: #a9c5ea;
-    --top-bg: rgba(11,18,32,.95);
-    --shadow: rgba(0,0,0,.4);
-  }
-}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 * { box-sizing: border-box; }
 
@@ -60,10 +46,17 @@ p { margin: 0 0 1rem; }
 .top { border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--top-bg); z-index: 10; }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 56px; }
 .brand { font-weight: 700; color: var(--ink); text-decoration: none; white-space: nowrap; }
-.top nav { display: flex; gap: 20px; overflow-x: auto; }
+.top nav { display: flex; gap: 20px; overflow-x: auto; margin-left: auto; }
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 40px; height: 40px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: transparent; color: var(--muted); cursor: pointer;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--navy); }
+.theme-toggle:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
 .top nav a { color: var(--muted); text-decoration: none; font-size: .9375rem; white-space: nowrap; }
 .top nav a:hover { color: var(--ink); }
-@media (max-width: 600px) { .top nav .opt { display: none; } }
+@media (max-width: 600px) { .top nav .opt { display: none; } .top nav { gap: 14px; } }
 
 /* Sections */
 section { padding: 64px 0; border-bottom: 1px solid var(--line); }
@@ -144,3 +137,20 @@ footer p { margin: 0; color: var(--muted); font-size: .875rem; }
 .flow span { padding: 6px 10px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; }
 .flow i { font-style: normal; color: var(--muted); }
 .next { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 24px 0 48px; border-top: 1px solid var(--line); }
+
+/* Archive */
+.prose.wide { max-width: none; }
+.prose.wide > p, .prose.wide > ul, .prose.wide > h2, .prose.wide > h3 { max-width: 68ch; }
+.prose.flush { padding: 0; }
+.prose h3 { margin: 24px 0 8px; }
+.prose.flush h3:first-child { margin-top: 0; }
+.prose .actions { margin: 24px 0; }
+.video { aspect-ratio: 16 / 9; margin: 24px 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+.video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; align-items: start; }
+.gallery a { display: block; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+/* Uniform tiles: the archive mixes landscape and tall phone screenshots */
+.gallery img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; }
+.card .thumb { display: block; width: 100%; height: auto; aspect-ratio: 570 / 394; object-fit: cover; border-radius: 6px; margin-bottom: 16px; background: var(--surface); }
+.group { margin: 40px 0 16px; }
+.group:first-of-type { margin-top: 0; }
