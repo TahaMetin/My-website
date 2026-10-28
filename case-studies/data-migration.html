@@ -14,7 +14,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Customer Data Migration · Taha Metin</title>
-  <meta name="description" content="Case study: IBM DataStage ETL jobs migrating customer data into Oracle databases." />
+  <meta name="description" content="Case study: scheduled IBM DataStage ETL jobs migrating customer data across enterprise databases into Oracle." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -41,44 +41,43 @@
     <div class="cs-head">
       <div class="eyebrow">Case study · Softtech</div>
       <h1>Customer data migration with DataStage</h1>
-      <p class="lede">ETL jobs in IBM DataStage that move customer data from bank databases into Softtech's Oracle
-        databases.</p>
+      <p class="lede">IBM DataStage ETL jobs, run with batch job scheduling, that migrate customer data across enterprise databases into Oracle.</p>
       <dl class="meta">
         <div><dt>Role</dt><dd>Software Engineer</dd></div>
-        <div><dt>Stack</dt><dd>IBM DataStage, Oracle Database, SQL</dd></div>
-        <div><dt>Type</dt><dd>ETL, data migration</dd></div>
+        <div><dt>Stack</dt><dd>IBM DataStage, Oracle Database, SQL, PL/SQL</dd></div>
+        <div><dt>Type</dt><dd>ETL, batch jobs, data migration</dd></div>
       </dl>
     </div>
 
     <article class="prose">
       <h2>Context</h2>
-      <p>Customer data held in the bank's own databases had to be brought into Softtech's Oracle databases so the
-        services built on top of them could use it.</p>
+      <p>Customer data held across several enterprise databases had to be brought into Oracle so that the services built on top of it could use it.</p>
 
-      <div class="flow" role="img" aria-label="Bank databases to DataStage ETL jobs to Softtech Oracle databases">
-        <span>Bank databases</span><i>→</i>
-        <span>DataStage: extract · transform · load</span><i>→</i>
-        <span>Softtech Oracle DB</span>
+      <div class="flow" role="img" aria-label="Enterprise databases to DataStage ETL jobs to Oracle">
+        <span>Enterprise databases</span>
+        <i>→</i><span>DataStage: extract · transform · load</span>
+        <i>→</i><span>Oracle DB</span>
       </div>
 
       <h2>My role</h2>
-      <p>I developed the DataStage ETL jobs for the migration.</p>
+      <p>I built the DataStage ETL jobs for the migration and set them up to run as scheduled batch jobs.</p>
 
       <h2>What I did</h2>
       <ul>
-        <li>Built jobs that extract customer records from the source bank databases.</li>
+        <li>Built jobs that extract customer records from the source enterprise databases.</li>
         <li>Transformed the data to fit the target Oracle schema.</li>
-        <li>Loaded it into the Softtech Oracle databases and checked the results with SQL.</li>
+        <li>Loaded it into Oracle and checked the results with SQL.</li>
+        <li>Configured batch job scheduling so the migration runs as scheduled batches.</li>
       </ul>
 
       <h2>Outcome</h2>
-      <p>Customer data became available in the target Oracle databases for the services that depend on it.</p>
+      <p>Customer data became available in Oracle for the services that depend on it.</p>
 
       <p class="note">Details are generalised to respect client confidentiality. No customer data is shown.</p>
     </article>
 
     <div class="next">
-      <a href="integration-flow.html">← Integration flows</a>
+      <a href="production-support.html">← Production support and releases</a>
       <a href="code-quality.html">Next: Code quality →</a>
     </div>
   </main>

@@ -14,7 +14,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Taha Metin · Backend Software Engineer</title>
-  <meta name="description" content="Backend software engineer with two years of fintech experience: Java, Spring Boot, microservices, REST/SOAP APIs, webMethods integration, Oracle and ETL." />
+  <meta name="description" content="Backend software engineer with two years of fintech experience at Softtech, including commercial loan decisioning: Java, Spring Boot, microservices, REST/SOAP APIs, webMethods ESB integration, Oracle, ETL and production support." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -50,9 +50,9 @@
         </div>
         <h1>Backend engineer building services for banking systems.</h1>
         <p class="lede">
-          Two years at Softtech developing and maintaining Java and Spring Boot microservices for banking and
-          financial products: REST and SOAP APIs, webMethods integration, Oracle databases and ETL with IBM
-          DataStage.
+          Two years at Softtech developing and maintaining Java/Spring Boot microservices for banking products,
+          including commercial loan decisioning: REST and SOAP APIs, webMethods ESB integration, Oracle, ETL with
+          IBM DataStage, and production support through to release.
         </p>
         <div class="actions">
           <a class="btn primary" href="assets/pdfs/taha_metin_cv.pdf" download>Download CV</a>
@@ -60,6 +60,11 @@
           <a class="btn" href="https://github.com/TahaMetin" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="mailto:tahametin341@gmail.com">Email</a>
         </div>
+        <dl class="focus">
+          <div><dt>Build</dt><dd>Java 21 and Spring Boot microservices with REST and SOAP APIs, synchronous and asynchronous.</dd></div>
+          <div><dt>Integrate</dt><dd>webMethods flow services on the ESB, feeding Oracle and the credit decision engine.</dd></div>
+          <div><dt>Run</dt><dd>Production support, Log4j2 log analysis on OpenShift, hotfixes and releases within SLA.</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -71,28 +76,34 @@
           <p>Generalised to respect client confidentiality: no bank names, internal system names or customer data.</p>
         </div>
         <div class="cards">
-          <a class="card" href="case-studies/java-21-migration.html">
-            <ul class="tags"><li>Java 21</li><li>Spring Boot</li><li>Maven / Gradle</li></ul>
-            <h3>Java 21 migration</h3>
-            <p>Moving multiple banking microservices from Java 8 and 17 to Java 21, with framework and dependency upgrades.</p>
+          <a class="card" href="case-studies/integration-flow.html">
+            <ul class="tags"><li>webMethods ESB</li><li>SOAP / REST</li><li>Oracle</li></ul>
+            <h3>Commercial loan decisioning integration</h3>
+            <p>webMethods flow services that route data from new services to Java backends, Oracle and the decision engine for credit scoring.</p>
             <span class="more">Read case study →</span>
           </a>
-          <a class="card" href="case-studies/integration-flow.html">
-            <ul class="tags"><li>webMethods</li><li>REST / SOAP</li><li>Oracle</li></ul>
-            <h3>Integration flows to the decision engine</h3>
-            <p>webMethods flow services that route data from new services to Java backends for persistence or decisioning.</p>
+          <a class="card" href="case-studies/java-21-migration.html">
+            <ul class="tags"><li>Java 21</li><li>Jakarta EE</li><li>Spring Boot</li></ul>
+            <h3>Java 21 migration</h3>
+            <p>Upgrading banking microservices from Java 8 and 17 to Java 21, including the javax → jakarta move.</p>
+            <span class="more">Read case study →</span>
+          </a>
+          <a class="card" href="case-studies/production-support.html">
+            <ul class="tags"><li>OpenShift</li><li>Log4j2</li><li>Azure DevOps</li></ul>
+            <h3>Production support and releases</h3>
+            <p>Tracing incidents through logs, shipping hotfixes within SLA and getting releases safely to production.</p>
             <span class="more">Read case study →</span>
           </a>
           <a class="card" href="case-studies/data-migration.html">
-            <ul class="tags"><li>IBM DataStage</li><li>ETL</li><li>Oracle</li></ul>
+            <ul class="tags"><li>IBM DataStage</li><li>ETL</li><li>Batch scheduling</li></ul>
             <h3>Customer data migration</h3>
-            <p>DataStage ETL jobs that move customer data from bank databases into Softtech Oracle databases.</p>
+            <p>Scheduled DataStage ETL jobs that migrate customer data across enterprise databases into Oracle.</p>
             <span class="more">Read case study →</span>
           </a>
           <a class="card" href="case-studies/code-quality.html">
-            <ul class="tags"><li>SonarQube</li><li>Unit tests</li><li>AI-assisted</li></ul>
+            <ul class="tags"><li>JUnit 5</li><li>Mockito</li><li>JaCoCo</li><li>SonarQube</li></ul>
             <h3>Code quality and test coverage</h3>
-            <p>Raising coverage and clearing SonarQube findings, using in-house AI tooling to speed up the work.</p>
+            <p>Unit tests that raise measured coverage, SonarQube clean-up and AI-assisted development.</p>
             <span class="more">Read case study →</span>
           </a>
         </div>
@@ -111,12 +122,16 @@
           <div>
             <h3>Software Engineer <span>· Softtech, Istanbul</span></h3>
             <ul>
-              <li>Developed and maintained Java and Spring Boot microservices for banking and financial products, exposed through REST and SOAP APIs.</li>
-              <li>Built webMethods (Software AG) flow services that route data to Java backends for persistence in Oracle DB or processing by the decision engine.</li>
-              <li>Contributed to the Java 21 migration, moving multiple microservices from Java 8/17 with Spring Boot and Maven/Gradle upgrades.</li>
-              <li>Developed IBM DataStage ETL jobs to migrate customer data from bank databases to Softtech Oracle databases.</li>
-              <li>Delivered features end to end, fixed bugs and resolved production defects and incident records within agreed timelines.</li>
-              <li>Worked in Agile teams with Jira, ScoreTFS (Git and CI/CD) and XL Release.</li>
+              <li>Developed and maintained Java/Spring Boot microservices for banking products, building REST and SOAP APIs with synchronous and asynchronous communication.</li>
+              <li>Built webMethods flow services on Integration Server (ESB), routing data from new services to Java backends for persistence in Oracle DB or processing by the decision engine for commercial loan credit scoring and evaluation.</li>
+              <li>Contributed to the Java 21 migration, upgrading multiple microservices from Java 8/17 to Java 21, including the javax → jakarta migration, Spring Boot upgrades and Maven/Gradle dependency updates.</li>
+              <li>Built IBM DataStage ETL jobs with batch job scheduling to migrate customer data across enterprise databases into Oracle.</li>
+              <li>Added new features end to end, delivered bug fixes and hotfixes, and provided production support, resolving incident records within SLA.</li>
+              <li>Traced production issues via log analysis (Log4j2) on OpenShift.</li>
+              <li>Wrote unit tests with JUnit 5 and Mockito, raised test coverage measured by JaCoCo, and resolved SonarQube findings.</li>
+              <li>Supported releases and hotfixes up to production via CI/CD pipelines (Azure DevOps, Digital.ai Release), troubleshooting failed deployments with the release team.</li>
+              <li>Used AI-assisted development with a company-hosted OpenCode setup to speed up coding, test writing and debugging.</li>
+              <li>Worked in Scrum teams (sprint ceremonies, effort estimation, code review) with business analysts and test teams, using Jira and Confluence.</li>
             </ul>
           </div>
         </div>
@@ -126,7 +141,7 @@
           <div>
             <h3>Game Developer Intern <span>· NoSurrender, Istanbul</span></h3>
             <ul>
-              <li>Built features for a real-time mobile strategy game in Unity and C#, applying SOLID principles and design patterns.</li>
+              <li>Developed features for a real-time mobile strategy game in Unity and C#, applying SOLID principles and design patterns.</li>
               <li>Worked with Addressables, ScriptableObjects, localization and Photon Bolt networking.</li>
             </ul>
           </div>
@@ -151,14 +166,16 @@
           <h2>Tools I use day to day</h2>
         </div>
         <dl class="skills">
-          <div><dt>Languages</dt><dd>Java (8, 17, 21), SQL, C#, Python, JavaScript</dd></div>
-          <div><dt>Frameworks &amp; build</dt><dd>Spring Boot, Maven, Gradle</dd></div>
-          <div><dt>Architecture</dt><dd>Microservices, OOP, SOLID, design patterns</dd></div>
-          <div><dt>APIs &amp; integration</dt><dd>REST, SOAP, webMethods (Software AG) flow services</dd></div>
-          <div><dt>Data &amp; ETL</dt><dd>Oracle Database, MongoDB, IBM DataStage, data migration</dd></div>
-          <div><dt>Quality</dt><dd>Unit testing, test coverage, SonarQube, code review</dd></div>
-          <div><dt>Delivery</dt><dd>Git, CI/CD, ScoreTFS, XL Release, Jira, Agile/Scrum</dd></div>
-          <div><dt>AI-assisted development</dt><dd>OpenCode, DeepSeek, GLM, Claude</dd></div>
+          <div><dt>Programming languages</dt><dd>Java (8, 17, 21), SQL, PL/SQL, C#, Python, JavaScript</dd></div>
+          <div><dt>Frameworks &amp; build</dt><dd>Spring Boot, Spring Web, Maven, Gradle</dd></div>
+          <div><dt>Architecture &amp; design</dt><dd>Microservices (sync/async), ESB, enterprise integration, OOP, SOLID, design patterns</dd></div>
+          <div><dt>APIs &amp; integration</dt><dd>REST, SOAP, WSDL, XSD, XML, OAuth2, Swagger, webMethods Integration Server &amp; Designer</dd></div>
+          <div><dt>Databases &amp; ETL</dt><dd>Oracle Database, MongoDB, DBeaver, IBM DataStage, data migration, batch job scheduling</dd></div>
+          <div><dt>Testing &amp; quality</dt><dd>JUnit 5, Mockito, JaCoCo, SonarQube, SoapUI, Postman</dd></div>
+          <div><dt>DevOps</dt><dd>Docker, Kubernetes, OpenShift, IBM WebSphere, Azure DevOps (TFS), CI/CD, Digital.ai Release (XL Release)</dd></div>
+          <div><dt>Logging &amp; monitoring</dt><dd>Log4j2, OpenShift</dd></div>
+          <div><dt>Workflow &amp; collaboration</dt><dd>Agile/Scrum, Jira, Confluence, Git, GitHub, Trello</dd></div>
+          <div><dt>AI-assisted development</dt><dd>OpenCode, Claude, LLM-based coding assistants</dd></div>
           <div><dt>Spoken languages</dt><dd>Turkish (native), English (B2, iTEP)</dd></div>
         </dl>
       </div>
@@ -193,7 +210,7 @@
       <p>
         <a href="https://www.linkedin.com/in/taha-metin/" target="_blank" rel="noopener">LinkedIn</a> ·
         <a href="https://github.com/TahaMetin" target="_blank" rel="noopener">GitHub</a> ·
-        <a href="assets/pdfs/taha_metin_cv.pdf" download>CV (PDF)</a>
+        <a href="assets/pdfs/taha_metin_cv.pdf" target="_blank" rel="noopener">View CV</a>
       </p>
     </div>
   </footer>

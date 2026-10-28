@@ -14,7 +14,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Code Quality · Taha Metin</title>
-  <meta name="description" content="Case study: raising test coverage and resolving SonarQube findings with AI-assisted development." />
+  <meta name="description" content="Case study: JUnit 5 and Mockito unit tests, JaCoCo coverage, SonarQube findings and AI-assisted development." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -41,37 +41,34 @@
     <div class="cs-head">
       <div class="eyebrow">Case study · Softtech</div>
       <h1>Code quality and test coverage</h1>
-      <p class="lede">Writing unit tests to raise coverage and resolving SonarQube findings, using in-house
-        AI-assisted tooling to speed up coding, test writing and debugging.</p>
+      <p class="lede">Unit tests with JUnit 5 and Mockito that raise coverage measured by JaCoCo, SonarQube clean-up, and AI-assisted development with a company-hosted OpenCode setup.</p>
       <dl class="meta">
         <div><dt>Role</dt><dd>Software Engineer</dd></div>
-        <div><dt>Stack</dt><dd>Java, unit testing, SonarQube</dd></div>
-        <div><dt>Tooling</dt><dd>OpenCode with DeepSeek and GLM models</dd></div>
+        <div><dt>Testing</dt><dd>JUnit 5, Mockito, JaCoCo, SonarQube</dd></div>
+        <div><dt>Tooling</dt><dd>Company-hosted OpenCode</dd></div>
       </dl>
     </div>
 
     <article class="prose">
       <h2>Context</h2>
-      <p>Banking services live for a long time and change often. Low test coverage and open static-analysis findings
-        make every change riskier and slow down reviews.</p>
+      <p>Banking services live for a long time and change often. Low test coverage and open static-analysis findings make every change riskier and slow down reviews.</p>
 
       <h2>My role</h2>
-      <p>Alongside feature work, I took on improving the test coverage and SonarQube results of the services I worked
-        on.</p>
+      <p>Alongside feature work, I took on improving the test coverage and SonarQube results of the services I worked on.</p>
 
       <h2>What I did</h2>
       <ul>
-        <li>Wrote unit tests for untested code paths to raise coverage.</li>
+        <li>Wrote unit tests with JUnit 5, using Mockito to isolate services from their dependencies.</li>
+        <li>Measured coverage with JaCoCo and targeted untested paths to raise it.</li>
         <li>Resolved SonarQube findings to improve maintainability.</li>
-        <li>Used OpenCode, integrated with DeepSeek and GLM models, to draft tests, explore unfamiliar code and debug
-          faster, reviewing every suggestion before it went in.</li>
+        <li>Reviewed teammates' code as part of the Scrum team.</li>
+        <li>Used a company-hosted OpenCode setup to speed up coding, test writing and debugging, reviewing every suggestion before it went in.</li>
       </ul>
 
       <h2>Outcome</h2>
-      <p>Higher test coverage and fewer open SonarQube findings on the services I touched, giving the team more
-        confidence when shipping changes.</p>
+      <p>Higher measured coverage and fewer open SonarQube findings on the services I touched, giving the team more confidence when shipping changes.</p>
 
-      <p class="note">Details are generalised to respect client confidentiality.</p>
+      <p class="note">Details are generalised to respect client confidentiality. No customer data is shown.</p>
     </article>
 
     <div class="next">
