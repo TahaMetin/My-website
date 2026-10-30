@@ -33,18 +33,32 @@
     chips.hidden = false;
   }
 
-  // Case files stack only when each folder fits under the tabs above it; otherwise part of a folder could never be seen
+  // Case files stack as you scroll. Each folder sticks one tab below the folder before it, or higher if it is too
+  // tall for that, so its bottom is on screen before the next folder covers it. Only the tab of a covered folder
+  // can show above the next one, never a cut-off slice of its text.
   var files = document.querySelector('.files');
   if (files) {
     var folders = files.querySelectorAll('.folder');
-    var wide = window.matchMedia('(min-width: 761px)');
+    // The small viewport height stays put while a phone's address bar slides in and out, so folders do not jump
+    var probe = document.createElement('div');
+    probe.style.cssText = 'position:fixed;top:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none';
+    document.body.appendChild(probe);
+    files.classList.add('stack');
     var fit = function () {
-      files.classList.add('stack'); // measure with the stacked sizes applied
-      var ok = wide.matches;
-      for (var k = 0; ok && k < folders.length - 1; k++) {
-        if (k * 52 + folders[k].offsetHeight > window.innerHeight + 1) ok = false;
-      }
-      files.classList.toggle('stack', ok);
+      var screen = probe.offsetHeight, tab = folders[0].querySelector('.tab').offsetHeight, top = 0, bottom = 0;
+      folders.forEach(function (f) { f.querySelector('.file').style.minHeight = ''; });
+      folders.forEach(function (f, k) {
+        var file = f.querySelector('.file'), h = f.offsetHeight;
+        top = Math.min(k ? top + tab : 0, screen - h);
+        // A folder shorter than the one under it gets empty paper added, so none of that one shows below it.
+        // The last folder needs none: the section ends at its bottom, so the folders under it cannot reach lower.
+        if (k < folders.length - 1 && top + h < bottom) {
+          file.style.minHeight = file.offsetHeight + bottom - top - h + 'px';
+          h = bottom - top;
+        }
+        bottom = top + h;
+        f.style.setProperty('--top', top + 'px');
+      });
     };
     fit();
     window.addEventListener('resize', fit);

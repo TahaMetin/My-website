@@ -276,9 +276,13 @@ main > section { padding: 96px 0; }
 
 /* Case files: kraft and leather folders that stack as you scroll */
 .files .section-head { margin-bottom: 40px; }
-/* Folders stack only where every one fits on screen; the homepage script adds .stack after measuring */
+/* Folders stack as you scroll. The homepage script adds .stack and sets each folder's --top:
+   just below the tab above it, or higher for a folder too tall for that, so it stops only once fully read */
+.stack .folder { position: sticky; top: var(--top, 0px); }
+/* The row beside a stacked tab is see-through, so the folder underneath must show only empty paper there */
+.stack .file { padding-top: 56px; }
+@media (max-width: 760px) { .stack .file { padding-top: 48px; } }
 @media (min-width: 761px) {
-  .stack .folder { position: sticky; top: calc(var(--i, 0) * 52px); }
   /* Each folder fills the screen below the tabs above it, so the next folder only slides over empty paper
      until the reader is past this one's text and link */
   .stack .file { min-height: calc(100vh - (var(--i, 0) + 2) * 52px); }
@@ -293,7 +297,7 @@ main > section { padding: 96px 0; }
 /* The tab's own clip-path would cut an outline, so the ring goes round the label instead */
 .tab:focus-visible { outline: none; }
 .tab:focus-visible span { outline: 3px solid currentColor; outline-offset: 4px; }
-.file { background-color: var(--c); color: var(--t); padding: clamp(20px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: start; }
+.file { background-color: var(--c); color: var(--t); padding: clamp(20px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: start; align-content: start; }
 /* Leather folders are stitched round the edge */
 .tone-2 .file, .tone-4 .file { outline: 2px dashed var(--stitch); outline-offset: -12px; } /* taste-skill-ignore */
 /* Sized so the longest case title stays on two lines at every width */
