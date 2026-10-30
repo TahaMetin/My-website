@@ -161,7 +161,7 @@ main > section { padding: 120px 0; }
 .cover h1 { font-size: var(--step-display); line-height: 0.88; letter-spacing: -0.05em; max-width: 9ch; margin: 0; }
 .cover-id { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: start; }
 .cover .name { font-size: var(--step-lead); font-weight: 600; letter-spacing: -0.02em; margin: 24px 0 0; }
-.photo { display: block; width: 132px; height: 176px; object-fit: cover; filter: grayscale(1); }
+.photo { display: block; width: 132px; height: 176px; object-fit: cover; }
 .cover .actions { margin-top: 40px; }
 .fields { display: grid; gap: 14px; margin: 48px 0 0; }
 .fields div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; }
