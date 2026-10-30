@@ -17,9 +17,9 @@
   <meta name="description" content="Case study: migrating banking microservices from Java 8 and 17 to Java 21, including the javax to jakarta migration." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/css/site.css" />
-  <script src="../assets/js/theme.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/site.css?v=20261030" />
+  <script src="../assets/js/theme.js?v=20261030"></script>
 </head>
 
 <body>
@@ -37,9 +37,10 @@
     </div>
   </header>
 
-  <main class="wrap">
+  <main>
+    <div class="cs-field">
     <div class="cs-head">
-      <div class="eyebrow">Case study · Softtech</div>
+      <div class="sheet-head"><span>Case study</span><span>Softtech</span></div>
       <h1>Java 21 migration for banking microservices</h1>
       <p class="lede">Upgrading multiple production microservices from Java 8 and 17 to Java 21, including the javax → jakarta migration, Spring Boot upgrades and Maven/Gradle dependency updates.</p>
       <dl class="meta">
@@ -48,7 +49,9 @@
         <div><dt>Delivery</dt><dd>Azure DevOps (TFS), Digital.ai Release</dd></div>
       </dl>
     </div>
+    </div>
 
+    <div class="sheet-col">
     <article class="prose">
       <h2>Context</h2>
       <p>The services behind several banking products were running on a mix of Java 8 and Java 17. Older runtimes meant older framework versions, ageing dependencies and diverging build setups across teams. The platform team started infrastructure work to bring services onto Java 21.</p>
@@ -74,6 +77,7 @@
     <div class="next">
       <a href="integration-flow.html">← Commercial loan integration</a>
       <a href="production-support.html">Next: Production support and releases →</a>
+    </div>
     </div>
   </main>
 </body>

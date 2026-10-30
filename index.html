@@ -17,9 +17,9 @@
   <meta name="description" content="Backend software engineer with two years of fintech experience at Softtech, including commercial loan decisioning: Java, Spring Boot, microservices, REST/SOAP APIs, webMethods ESB integration, Oracle, ETL and production support." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/site.css" />
-  <script src="assets/js/theme.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site.css?v=20261030" />
+  <script src="assets/js/theme.js?v=20261030"></script>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
     <div class="wrap">
       <a class="brand" href="#">Taha Metin</a>
       <nav aria-label="Main">
-        <a href="#work">Work</a>
+        <a href="#work">Case files</a>
         <a class="opt" href="#experience">Experience</a>
         <a class="opt" href="#skills">Skills</a>
         <a href="#contact">Contact</a>
@@ -39,82 +39,179 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="hero-id">
-          <img class="avatar" src="assets/images/author-image.jpg" alt="Muhammed Taha Metin" width="72" height="72" />
+    <div class="cs-field">
+      <article class="cs-head cover">
+        <div class="sheet-head"><span>Application file</span><span>Istanbul, 2026</span></div>
+        <div class="cover-id">
           <div>
-            <strong>Muhammed Taha Metin</strong><br />
-            <span class="status">Open to new roles · Istanbul</span>
+            <h1>Backend Engineer</h1>
+            <p class="name">Muhammed Taha Metin</p>
           </div>
+          <img class="photo" src="assets/images/author-image.jpg" alt="Muhammed Taha Metin" width="132" height="176" />
         </div>
-        <h1>Backend Engineer</h1>
-        <p class="lede">
-          Two years at Softtech developing and maintaining Java/Spring Boot microservices for banking products,
-          including commercial loan decisioning: REST and SOAP APIs, webMethods ESB integration, Oracle, ETL with
-          IBM DataStage, and production support through to release.
-        </p>
         <div class="actions">
           <a class="btn primary" href="assets/pdfs/taha_metin_cv.pdf" download>Download CV</a>
           <a class="btn" href="https://www.linkedin.com/in/taha-metin/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="https://github.com/TahaMetin" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="mailto:tahametin.iletisim@gmail.com">Email</a>
         </div>
-        <dl class="focus">
-          <div><dt>Build</dt><dd>Java 21 and Spring Boot microservices with REST and SOAP APIs, synchronous and asynchronous.</dd></div>
-          <div><dt>Integrate</dt><dd>webMethods flow services on the ESB, feeding Oracle and the credit decision engine.</dd></div>
-          <div><dt>Run</dt><dd>Production support, Log4j2 log analysis on OpenShift, hotfixes and releases within SLA.</dd></div>
+        <dl class="fields">
+          <div><dt>Experience</dt><dd>Two years at Softtech, Aug 2024 – Oct 2026</dd></div>
+          <div><dt>Domain</dt><dd>Banking products, including commercial loan decisioning</dd></div>
+          <div><dt>Core stack</dt><dd>Java 21, Spring Boot, webMethods ESB, Oracle</dd></div>
+          <div><dt>Also</dt><dd>IBM DataStage, OpenShift, Azure DevOps, JUnit 5</dd></div>
+          <div><dt>Status</dt><dd>Open to new roles in Istanbul</dd></div>
         </dl>
+        <nav class="enclosed" aria-label="Contents of this file">
+          <h2>Enclosed</h2>
+          <ul>
+            <li><a href="#letter">Cover letter</a></li>
+            <li><a href="#work">Five case files</a></li>
+            <li><a href="#check">Requirement check</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills sheet</a></li>
+          </ul>
+        </nav>
+      </article>
+    </div>
+
+    <section id="letter">
+      <div class="wrap">
+        <div class="sheet letter">
+          <h2 class="sr-only">Cover letter</h2>
+          <p>I'm a backend engineer. For two years at Softtech I developed and maintained Java and Spring Boot
+            microservices for banking products, including commercial loan decisioning.</p>
+          <p>I built webMethods flow services on the ESB that route data from new services to Java backends, where it
+            is persisted in Oracle or processed by the decision engine for commercial loan credit scoring. I also
+            contributed to the Java 21 migration, built IBM DataStage ETL jobs to migrate customer data, and wrote
+            unit tests with JUnit 5 and Mockito to raise test coverage.</p>
+          <p>On the production side, I traced issues through Log4j2 logs on OpenShift, delivered bug fixes and
+            hotfixes, resolved incident records within SLA and supported releases through Azure DevOps and
+            Digital.ai Release.</p>
+          <p>I'm now looking for backend roles in fintech and beyond. The case files below show this work in more
+            detail.</p>
+          <p class="sign"><strong>Muhammed Taha Metin</strong><span>Backend Engineer, Istanbul</span></p>
+        </div>
       </div>
     </section>
 
-    <section id="work" class="band">
+    <section id="work" class="files">
       <div class="wrap">
         <div class="section-head">
-          <div class="eyebrow">Selected work</div>
-          <h2>Case studies from fintech</h2>
+          <h2>Five case files</h2>
           <p>Generalised to respect client confidentiality: no bank names, internal system names or customer data.</p>
         </div>
-        <div class="cards">
-          <a class="card" href="case-studies/integration-flow.html">
-            <ul class="tags"><li>webMethods ESB</li><li>SOAP / REST</li><li>Oracle</li></ul>
-            <h3>Commercial loan decisioning integration</h3>
-            <p>webMethods flow services that route data from new services to Java backends, Oracle and the decision engine for credit scoring.</p>
-            <span class="more">Read case study →</span>
-          </a>
-          <a class="card" href="case-studies/java-21-migration.html">
-            <ul class="tags"><li>Java 21</li><li>Jakarta EE</li><li>Spring Boot</li></ul>
-            <h3>Java 21 migration</h3>
-            <p>Upgrading banking microservices from Java 8 and 17 to Java 21, including the javax → jakarta move.</p>
-            <span class="more">Read case study →</span>
-          </a>
-          <a class="card" href="case-studies/production-support.html">
-            <ul class="tags"><li>OpenShift</li><li>Log4j2</li><li>Azure DevOps</li></ul>
-            <h3>Production support and releases</h3>
-            <p>Tracing incidents through logs, shipping hotfixes within SLA and getting releases safely to production.</p>
-            <span class="more">Read case study →</span>
-          </a>
-          <a class="card" href="case-studies/data-migration.html">
-            <ul class="tags"><li>IBM DataStage</li><li>ETL</li><li>Batch scheduling</li></ul>
-            <h3>Customer data migration</h3>
-            <p>Scheduled DataStage ETL jobs that migrate customer data across enterprise databases into Oracle.</p>
-            <span class="more">Read case study →</span>
-          </a>
-          <a class="card" href="case-studies/code-quality.html">
-            <ul class="tags"><li>JUnit 5</li><li>Mockito</li><li>JaCoCo</li><li>SonarQube</li></ul>
-            <h3>Code quality and test coverage</h3>
-            <p>Unit tests that raise measured coverage, SonarQube clean-up and AI-assisted development.</p>
-            <span class="more">Read case study →</span>
-          </a>
+
+        <div class="folder tone-1" style="--i:0; --x:0%">
+          <a class="tab" href="case-studies/integration-flow.html"><span>Loan integration</span></a>
+          <div class="file">
+            <div>
+              <h3>Commercial loan decisioning integration</h3>
+              <p>webMethods flow services that take data from new services and route it to Java backends, where it is
+                stored in Oracle or scored by the credit decision engine.</p>
+              <a href="case-studies/integration-flow.html">Open the case file →</a>
+            </div>
+            <dl>
+              <div><dt>Role</dt><dd>Software Engineer</dd></div>
+              <div><dt>Stack</dt><dd>webMethods Integration Server, Java, Spring Boot, Oracle</dd></div>
+              <div><dt>Interfaces</dt><dd>SOAP (WSDL, XSD), REST, sync and async</dd></div>
+            </dl>
+          </div>
         </div>
+
+        <div class="folder tone-2" style="--i:1; --x:18%">
+          <a class="tab" href="case-studies/java-21-migration.html"><span>Java 21 migration</span></a>
+          <div class="file">
+            <div>
+              <h3>Java 21 migration</h3>
+              <p>Moving banking microservices from Java 8 and 17 to Java 21: the javax to jakarta move, Spring Boot
+                upgrades and Maven and Gradle dependency updates.</p>
+              <a href="case-studies/java-21-migration.html">Open the case file →</a>
+            </div>
+            <dl>
+              <div><dt>Role</dt><dd>Software Engineer</dd></div>
+              <div><dt>Stack</dt><dd>Java 21, Jakarta EE, Spring Boot, Maven, Gradle</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="folder tone-3" style="--i:2; --x:36%">
+          <a class="tab" href="case-studies/production-support.html"><span>Production support</span></a>
+          <div class="file">
+            <div>
+              <h3>Production support and releases</h3>
+              <p>Tracing incidents through Log4j2 logs on OpenShift, shipping hotfixes within SLA and getting releases
+                safely to production.</p>
+              <a href="case-studies/production-support.html">Open the case file →</a>
+            </div>
+            <dl>
+              <div><dt>Role</dt><dd>Software Engineer</dd></div>
+              <div><dt>Tools</dt><dd>OpenShift, Log4j2, Azure DevOps, Digital.ai Release</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="folder tone-4" style="--i:3; --x:54%">
+          <a class="tab" href="case-studies/data-migration.html"><span>Data migration</span></a>
+          <div class="file">
+            <div>
+              <h3>Customer data migration</h3>
+              <p>Scheduled IBM DataStage ETL jobs that move customer data from enterprise databases into Oracle.</p>
+              <a href="case-studies/data-migration.html">Open the case file →</a>
+            </div>
+            <dl>
+              <div><dt>Role</dt><dd>Software Engineer</dd></div>
+              <div><dt>Stack</dt><dd>IBM DataStage, Oracle, batch scheduling</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="folder tone-5" style="--i:4; --x:72%">
+          <a class="tab" href="case-studies/code-quality.html"><span>Code quality</span></a>
+          <div class="file">
+            <div>
+              <h3>Code quality and test coverage</h3>
+              <p>Unit tests with JUnit 5 and Mockito that raise JaCoCo coverage, SonarQube clean-up and AI-assisted
+                development.</p>
+              <a href="case-studies/code-quality.html">Open the case file →</a>
+            </div>
+            <dl>
+              <div><dt>Role</dt><dd>Software Engineer</dd></div>
+              <div><dt>Testing</dt><dd>JUnit 5, Mockito, JaCoCo, SonarQube</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="check" class="check">
+      <div class="wrap">
+        <h2>Check your requirements</h2>
+        <p class="intro">Pick what your job ad asks for. Each match links to the case file where I used it.</p>
+        <div class="chips" role="group" aria-label="Requirements" hidden></div>
+        <ul class="results" aria-live="polite">
+          <li data-req="Java 21"><b>Java 21</b><a href="case-studies/java-21-migration.html">Java 21 migration</a></li>
+          <li data-req="Spring Boot"><b>Spring Boot</b><a href="case-studies/java-21-migration.html">Java 21 migration, including Spring Boot upgrades</a></li>
+          <li data-req="Microservices"><b>Microservices</b><a href="case-studies/integration-flow.html">Loan decisioning integration, sync and async</a></li>
+          <li data-req="REST"><b>REST</b><a href="case-studies/integration-flow.html">Loan decisioning integration</a></li>
+          <li data-req="SOAP"><b>SOAP</b><a href="case-studies/integration-flow.html">Loan decisioning integration (WSDL, XSD)</a></li>
+          <li data-req="webMethods"><b>webMethods</b><a href="case-studies/integration-flow.html">Loan decisioning integration</a></li>
+          <li data-req="Oracle"><b>Oracle</b><a href="case-studies/data-migration.html">Customer data migration</a></li>
+          <li data-req="ETL"><b>ETL</b><a href="case-studies/data-migration.html">IBM DataStage jobs for customer data migration</a></li>
+          <li data-req="OpenShift"><b>OpenShift</b><a href="case-studies/production-support.html">Production support</a></li>
+          <li data-req="CI/CD"><b>CI/CD</b><a href="case-studies/production-support.html">Releases with Azure DevOps and Digital.ai Release</a></li>
+          <li data-req="JUnit 5"><b>JUnit 5</b><a href="case-studies/code-quality.html">Code quality and test coverage</a></li>
+          <li data-req="Mockito"><b>Mockito</b><a href="case-studies/code-quality.html">Code quality and test coverage</a></li>
+          <li data-req="SonarQube"><b>SonarQube</b><a href="case-studies/code-quality.html">Code quality and test coverage</a></li>
+        </ul>
+        <p class="empty" hidden>Pick a requirement to see where I used it.</p>
       </div>
     </section>
 
     <section id="experience">
       <div class="wrap">
         <div class="section-head">
-          <div class="eyebrow">Experience</div>
-          <h2>Where I have worked</h2>
+          <h2>Experience and education</h2>
         </div>
 
         <div class="job">
@@ -156,64 +253,102 @@
             </ul>
           </div>
         </div>
+
+        <div class="job">
+          <div class="when">2019 – 2024</div>
+          <div>
+            <h3>B.Sc. Computer Engineering <span>· Kocaeli University</span></h3>
+            <ul>
+              <li>Graduation project: a Myo armband–controlled game for physiotherapy, built in the Natural Human-Computer Interaction Lab.</li>
+              <li>I started out building games: more than a dozen Unity projects, one published on Google Play, plus algorithm and NLP projects from university. <a href="archive.html">Browse the project archive →</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="skills" class="band">
+    <section id="skills">
       <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Skills</div>
-          <h2>Tools I use day to day</h2>
-        </div>
-        <dl class="skills">
-          <div><dt>Programming languages</dt><dd>Java (8, 17, 21), SQL, PL/SQL, C#, Python, JavaScript</dd></div>
-          <div><dt>Frameworks &amp; build</dt><dd>Spring Boot, Spring Web, Maven, Gradle</dd></div>
-          <div><dt>Architecture &amp; design</dt><dd>Microservices (sync/async), ESB, enterprise integration, OOP, SOLID, design patterns</dd></div>
-          <div><dt>APIs &amp; integration</dt><dd>REST, SOAP, WSDL, XSD, XML, OAuth2, Swagger, webMethods Integration Server &amp; Designer</dd></div>
-          <div><dt>Databases &amp; ETL</dt><dd>Oracle Database, MongoDB, DBeaver, IBM DataStage, data migration, batch job scheduling</dd></div>
-          <div><dt>Testing &amp; quality</dt><dd>JUnit 5, Mockito, JaCoCo, SonarQube, SoapUI, Postman</dd></div>
-          <div><dt>DevOps</dt><dd>Docker, Kubernetes, OpenShift, IBM WebSphere, Azure DevOps (TFS), CI/CD, Digital.ai Release (XL Release)</dd></div>
-          <div><dt>Logging &amp; monitoring</dt><dd>Log4j2, OpenShift</dd></div>
-          <div><dt>Workflow &amp; collaboration</dt><dd>Agile/Scrum, Jira, Confluence, Git, GitHub, Trello</dd></div>
-          <div><dt>AI-assisted development</dt><dd>OpenCode, Claude, LLM-based coding assistants</dd></div>
-          <div><dt>Spoken languages</dt><dd>Turkish (native), English (B2, iTEP)</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap split">
-        <div>
-          <div class="eyebrow">Education</div>
-          <h3>B.Sc. Computer Engineering</h3>
-          <p>Kocaeli University · 2019 – 2024</p>
-          <p style="color:var(--muted)">Graduation project: a Myo armband–controlled game for physiotherapy, built in the
-            Natural Human-Computer Interaction Lab.</p>
-        </div>
-        <div>
-          <div class="eyebrow">Before fintech</div>
-          <h3>Game development</h3>
-          <p style="color:var(--muted)">I started out building games: more than a dozen Unity projects, one published
-            on Google Play, plus algorithm and NLP projects from university.</p>
-          <a href="archive.html">Browse the project archive →</a>
+        <div class="sheet">
+          <h2>Skills sheet</h2>
+          <dl class="skills">
+            <div><dt>Programming languages</dt><dd>Java (8, 17, 21), SQL, PL/SQL, C#, Python, JavaScript</dd></div>
+            <div><dt>Frameworks &amp; build</dt><dd>Spring Boot, Spring Web, Maven, Gradle</dd></div>
+            <div><dt>Architecture &amp; design</dt><dd>Microservices (sync/async), ESB, enterprise integration, OOP, SOLID, design patterns</dd></div>
+            <div><dt>APIs &amp; integration</dt><dd>REST, SOAP, WSDL, XSD, XML, OAuth2, Swagger, webMethods Integration Server &amp; Designer</dd></div>
+            <div><dt>Databases &amp; ETL</dt><dd>Oracle Database, MongoDB, DBeaver, IBM DataStage, data migration, batch job scheduling</dd></div>
+            <div><dt>Testing &amp; quality</dt><dd>JUnit 5, Mockito, JaCoCo, SonarQube, SoapUI, Postman</dd></div>
+            <div><dt>DevOps</dt><dd>Docker, Kubernetes, OpenShift, IBM WebSphere, Azure DevOps (TFS), CI/CD, Digital.ai Release (XL Release)</dd></div>
+            <div><dt>Logging &amp; monitoring</dt><dd>Log4j2, OpenShift</dd></div>
+            <div><dt>Workflow &amp; collaboration</dt><dd>Agile/Scrum, Jira, Confluence, Git, GitHub, Trello</dd></div>
+            <div><dt>AI-assisted development</dt><dd>OpenCode, Claude, LLM-based coding assistants</dd></div>
+            <div><dt>Spoken languages</dt><dd>Turkish (native), English (B2, iTEP)</dd></div>
+          </dl>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="contact">
+  <footer id="contact" class="contact">
     <div class="wrap">
       <div>
-        <h3>Let's talk</h3>
-        <p>Looking for backend roles in fintech and beyond. <a href="mailto:tahametin.iletisim@gmail.com">tahametin.iletisim@gmail.com</a></p>
+        <h2>Let's talk</h2>
+        <p>Looking for backend roles in fintech and beyond.</p>
       </div>
-      <p>
-        <a href="https://www.linkedin.com/in/taha-metin/" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a href="https://github.com/TahaMetin" target="_blank" rel="noopener">GitHub</a> ·
-        <a href="assets/pdfs/taha_metin_cv.pdf" target="_blank" rel="noopener">View CV</a>
-      </p>
+      <div class="biz">
+        <strong>Muhammed Taha Metin</strong>
+        <span class="role">Backend Engineer · Istanbul</span>
+        <a href="mailto:tahametin.iletisim@gmail.com">tahametin.iletisim@gmail.com</a>
+        <span class="links">
+          <a href="https://www.linkedin.com/in/taha-metin/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/TahaMetin" target="_blank" rel="noopener">GitHub</a>
+          <a href="assets/pdfs/taha_metin_cv.pdf" target="_blank" rel="noopener">View CV</a>
+        </span>
+        <a class="btn" href="assets/pdfs/taha_metin_cv.pdf" download>Download CV</a>
+      </div>
     </div>
   </footer>
+
+  <script>
+    // Requirement check: each chip shows or hides its row; without JS the whole list stays visible
+    (function () {
+      var chips = document.querySelector('.chips');
+      var empty = document.querySelector('.check .empty');
+      var start = ['Java 21', 'Spring Boot', 'SOAP', 'Oracle'];
+      document.querySelectorAll('.results li').forEach(function (li) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = li.dataset.req;
+        function set(on) {
+          b.setAttribute('aria-pressed', on);
+          li.hidden = !on;
+          empty.hidden = !!document.querySelector('.results li:not([hidden])');
+        }
+        set(start.indexOf(li.dataset.req) > -1);
+        b.addEventListener('click', function () { set(b.getAttribute('aria-pressed') !== 'true'); });
+        chips.appendChild(b);
+      });
+      chips.hidden = false;
+    })();
+
+    // Case files stack only when each folder fits under the tabs above it; otherwise part of a folder could never be seen
+    (function () {
+      var files = document.querySelector('.files');
+      var folders = files.querySelectorAll('.folder');
+      var wide = window.matchMedia('(min-width: 761px)');
+      function fit() {
+        files.classList.add('stack'); // measure with the stacked sizes applied
+        var ok = wide.matches;
+        for (var k = 0; ok && k < folders.length - 1; k++) {
+          if (k * 52 + folders[k].offsetHeight > window.innerHeight) ok = false;
+        }
+        files.classList.toggle('stack', ok);
+      }
+      fit();
+      window.addEventListener('resize', fit);
+      if (document.fonts) document.fonts.ready.then(fit);
+    })();
+  </script>
 </body>
 
 </html>
