@@ -41,9 +41,4 @@
     window.addEventListener('resize', update);
     update();
   }
-
-  // Print the whole record, folded parts included
-  window.addEventListener('beforeprint', function () {
-    document.querySelectorAll('details.more').forEach(function (d) { d.open = true; });
-  });
 })();

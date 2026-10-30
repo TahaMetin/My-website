@@ -1,4 +1,5 @@
 /* A leather document file: navy leather cover, saddle-tan leather folders, ivory paper, brass hardware.
+   The dark theme keeps the same cool-leather, warm-paper contrast: graphite and dark kraft paper on navy-black leather.
    Light values first. Dark values follow twice: once for the OS setting, once for a saved choice.
    Plain values instead of light-dark() so older browsers (Safari before 17.5) still get colours. */
 :root {
@@ -35,20 +36,22 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --field: #0a0f19; --field-2: #172131; --field-hover: #222e43; --field-ink: #e9e2d4;
-    --tan: #6f4323; --tan-ink: #f0e8da; --brass: #c9a66b; --brass-hover: #d8b77e;
-    --paper: #151e2d; --paper-2: #1d2738; --paper-3: #263246; --paper-4: #303d53;
-    --sheet: #1a2333; --ink: #e9e2d4; --muted: #a7adb8; --on-ink: #151e2d; --ink-hover: #ffffff;
-    --stitch: rgba(233, 226, 212, 0.24);
+    --field: #080d18; --field-2: #17223a; --field-hover: #223152; --field-ink: #ebe4d6;
+    --tan: #6b4024; --tan-ink: #f0e7d8; --brass: #c9a66b; --brass-hover: #d8b77e;
+    --paper: #2a2620; --paper-2: #443d33; --paper-3: #4c4134; --paper-4: #584a3b;
+    --sheet: #2f2a23; --ink: #ece5d8; --muted: #b3aa9a; --on-ink: #2a2620; --ink-hover: #ffffff;
+    --stitch: rgba(236, 229, 216, 0.3);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .4 -.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --field: #0a0f19; --field-2: #172131; --field-hover: #222e43; --field-ink: #e9e2d4;
-  --tan: #6f4323; --tan-ink: #f0e8da; --brass: #c9a66b; --brass-hover: #d8b77e;
-  --paper: #151e2d; --paper-2: #1d2738; --paper-3: #263246; --paper-4: #303d53;
-  --sheet: #1a2333; --ink: #e9e2d4; --muted: #a7adb8; --on-ink: #151e2d; --ink-hover: #ffffff;
-  --stitch: rgba(233, 226, 212, 0.24);
+  --field: #080d18; --field-2: #17223a; --field-hover: #223152; --field-ink: #ebe4d6;
+  --tan: #6b4024; --tan-ink: #f0e7d8; --brass: #c9a66b; --brass-hover: #d8b77e;
+  --paper: #2a2620; --paper-2: #443d33; --paper-3: #4c4134; --paper-4: #584a3b;
+  --sheet: #2f2a23; --ink: #ece5d8; --muted: #b3aa9a; --on-ink: #2a2620; --ink-hover: #ffffff;
+  --stitch: rgba(236, 229, 216, 0.3);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .4 -.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
 * { box-sizing: border-box; }
@@ -190,14 +193,6 @@ main > section { padding: 120px 0; }
 .job h3 span { font-weight: 400; color: var(--muted); }
 .job ul { margin: 16px 0 0; padding-left: 20px; }
 .job li { margin-bottom: 8px; }
-/* The rest of a long list stays folded until asked for; works without JavaScript */
-.more { margin-top: 4px; }
-.more > summary { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; font-weight: 600; list-style: none; }
-.more > summary::-webkit-details-marker { display: none; }
-.more > summary::before { content: "+"; display: inline-grid; place-items: center; width: 26px; height: 26px; background: var(--paper-3); font-weight: 800; }
-.more[open] > summary::before { content: "−"; }
-.more[open] .when-closed, .more:not([open]) .when-open { display: none; }
-.more > ul { margin-top: 4px; }
 .group { margin: 56px 0 20px; }
 .group:first-of-type { margin-top: 0; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 8px; }
@@ -364,7 +359,6 @@ main > section { padding: 120px 0; }
   .reveal { opacity: 1 !important; transform: none !important; }
   .theme-toggle, .top nav, .chips, .enclosed, .check .empty, .video, .sections { display: none !important; }
   .results li[hidden] { display: grid !important; }
-  .more > summary { display: none; }
   .check, .contact, .file { outline: none; }
   main > section, .contact { padding: 32px 0; }
   .cs-field { padding-top: 0; }
