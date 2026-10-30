@@ -28,11 +28,15 @@
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .4 -.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   --cut: 24px;
   --max: 1120px;
+  /* One curve for everything that enters: quick start, long gentle stop */
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
   --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
-  --step-head: clamp(2rem, 1.3rem + 2.6vw, 3.25rem);
-  --step-display: clamp(3.25rem, 1.2rem + 6vw, 6.25rem);
+  /* Headings never grow past a share of the screen, so a long word such as "Gereksinimlerinizi" or "Mühendisliği"
+     stays whole on a small phone or with large text. At normal text size this only bites below about 340–385px */
+  --step-head: min(clamp(2rem, 1.3rem + 2.6vw, 3.25rem), 9.5vw);
+  --step-display: min(clamp(3.25rem, 1.2rem + 6vw, 6.25rem), 13.5vw);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -82,11 +86,19 @@
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 
+/* Less motion keeps colour fades and the 1px press; the slides and rises only run under no-preference below */
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition: none !important; animation: none !important; }
 }
+
+/* Phones: no grey flash on tap (the buttons have their own press), no text inflation in landscape.
+   Hover colours sit in (hover: hover) queries below, because a tap leaves :hover stuck on */
+html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+/* Quick taps on the requirement chips are clicks, not a double-tap zoom */
+a, button { touch-action: manipulation; }
+/* A long press on a control should not select its label */
+.btn, .chips button, .theme-toggle, .lang, .enclosed a, .next a, .tab, .sections a { -webkit-user-select: none; user-select: none; }
 
 body {
   margin: 0;
@@ -124,19 +136,21 @@ main > section { padding: 96px 0; }
 .brand { font-size: var(--step-lead); font-weight: 800; letter-spacing: -0.04em; text-decoration: none; white-space: nowrap; }
 .top nav { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-left: auto; font-size: var(--step-small); font-weight: 600; }
 .top nav a { text-decoration: none; white-space: nowrap; }
-.top nav a:hover { text-decoration: underline; }
+@media (hover: hover) and (pointer: fine) { .top nav a:hover { text-decoration: underline; } }
 /* Only shown once theme.js has run, so it is never a dead button */
 .theme-toggle {
   display: none; align-items: center; justify-content: center; flex-shrink: 0;
   width: 40px; height: 40px; border: 0; background: var(--field-2); color: var(--field-ink);
-  cursor: pointer; transition: background .15s;
+  cursor: pointer; transition: background .15s, transform .1s;
 }
 .js .theme-toggle { display: inline-flex; }
-.theme-toggle:hover, .lang:hover { background: var(--field-hover); }
+/* Set by theme.js for the moment the colours swap, so every surface changes at once */
+.theme-switch * { transition: none !important; }
+@media (hover: hover) and (pointer: fine) { .theme-toggle:hover, .lang:hover { background: var(--field-hover); } }
 /* Language switch: a plain link, so it works without JavaScript */
 .lang {
   display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 40px; height: 40px;
-  background: var(--field-2); color: var(--field-ink); font-size: var(--step-small); font-weight: 700; text-decoration: none; transition: background .15s;
+  background: var(--field-2); color: var(--field-ink); font-size: var(--step-small); font-weight: 700; text-decoration: none; transition: background .15s, transform .1s;
 }
 .lang + .theme-toggle { margin-left: -8px; }
 /* Phones: name and the two buttons on the first row, the menu on its own row below, so the buttons never split up.
@@ -146,6 +160,8 @@ main > section { padding: 96px 0; }
   .top .wrap { row-gap: 6px; }
   .top nav { gap: 4px 16px; order: 1; flex-basis: 100%; margin-left: 0; }
   .lang, .top nav + .theme-toggle { margin-left: auto; }
+  /* Room for both buttons is kept, so a longer name is cut short instead of pushing one onto the next row */
+  .brand { max-width: calc(100% - 104px); overflow: hidden; text-overflow: ellipsis; }
 }
 
 /* Buttons: the primary one is brass, like the file's hardware */
@@ -154,10 +170,11 @@ main > section { padding: 96px 0; }
   display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px;
   background: var(--paper-2); color: var(--ink); font-weight: 600; text-decoration: none; transition: background .15s, transform .1s;
 }
-.btn:hover { background: var(--paper-3); }
+@media (hover: hover) and (pointer: fine) { .btn:hover { background: var(--paper-3); } }
 .btn.primary { background: var(--brass); color: var(--on-brass); }
-.btn.primary:hover { background: var(--brass-hover); }
-.btn:active, .chips button:active, .enclosed a:active, .next a:active { transform: translateY(1px); }
+@media (hover: hover) and (pointer: fine) { .btn.primary:hover { background: var(--brass-hover); } }
+.btn:active, .chips button:active, .enclosed a:active, .next a:active,
+.theme-toggle:active, .lang:active, .card:active { transform: translateY(1px); }
 
 /* A paper sheet on the leather: homepage cover, case study and project heads */
 .cs-field { --side: 12px; --inner: clamp(20px, 5vw, 56px); background-color: var(--field); padding: 48px var(--side) 0; }
@@ -184,10 +201,15 @@ main > section { padding: 96px 0; }
   flex: none; padding: 10px 16px; border-radius: 10px 10px 0 0; background: var(--paper-3); color: var(--ink);
   font-size: var(--step-small); font-weight: 600; text-decoration: none; transition: background .15s, color .15s;
 }
-.sections a:hover { background: var(--paper-4); }
+@media (hover: hover) and (pointer: fine) { .sections a:hover { background: var(--paper-4); } }
 .sections a[aria-current] { background: var(--field); color: var(--field-ink); }
 /* The nav scrolls sideways, so a ring outside the tab would be cut off */
 .sections a:focus-visible { outline-offset: -5px; }
+/* site.js adds .more while tabs are hidden past the right edge: the last visible one fades out instead of being cut */
+.sections.more::after {
+  content: ""; position: sticky; right: 0; flex: none; width: 32px; margin-left: -32px;
+  background: linear-gradient(to right, transparent, var(--paper)); pointer-events: none;
+}
 .sections + .prose { padding-top: 40px; }
 .prose h2[id] { scroll-margin-top: 84px; }
 
@@ -208,14 +230,15 @@ main > section { padding: 96px 0; }
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 24px 0 32px; padding: 20px;
   background: var(--field) var(--grain); color: var(--field-ink); font-size: var(--step-small); font-weight: 600;
 }
-.flow span { padding: 9px 13px; background: var(--sheet); color: var(--ink); }
+/* A step name longer than the strip breaks rather than pushing the page sideways */
+.flow span { padding: 9px 13px; background: var(--sheet); color: var(--ink); overflow-wrap: anywhere; }
 .flow i { font-style: normal; font-weight: 800; color: var(--brass); }
 .next { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; padding: 0 0 96px; }
 .next a {
   display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 12px 12px 0 0;
   background: var(--field) var(--grain); color: var(--field-ink); font-weight: 600; text-decoration: none; transition: background-color .15s, transform .1s;
 }
-.next a:hover { background-color: var(--field-2); }
+@media (hover: hover) and (pointer: fine) { .next a:hover { background-color: var(--field-2); } }
 .video { aspect-ratio: 16 / 9; margin: 28px 0; background: var(--paper-2); }
 .video iframe { width: 100%; height: 100%; border: 0; display: block; }
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr)); gap: 8px; margin: 28px 0; align-items: start; }
@@ -236,15 +259,18 @@ main > section { padding: 96px 0; }
 .group { margin: 56px 0 20px; }
 .group:first-of-type { margin-top: 0; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 8px; }
-.card { display: block; padding: 20px; background: var(--sheet); text-decoration: none; transition: background .15s; }
-.card:hover { background: var(--paper-2); }
+.card { display: block; padding: 20px; background: var(--sheet); text-decoration: none; transition: background .15s, transform .1s; }
+@media (hover: hover) and (pointer: fine) { .card:hover { background: var(--paper-2); } }
 .card h3 { margin-bottom: 6px; }
 .card p { color: var(--muted); font-size: var(--step-small); margin: 0; }
 .card .thumb { display: block; width: 100%; height: auto; aspect-ratio: 570 / 394; object-fit: cover; margin-bottom: 16px; background: var(--paper-2); }
 
 /* Homepage cover sheet */
-.cover h1 { font-size: var(--step-display); line-height: 0.88; letter-spacing: -0.05em; max-width: 9ch; margin: 0; }
+/* The title is also capped at 19% of its own column, so with large text beside the photo a word like "Mühendisi"
+   stays whole. Browsers without container units keep the first font-size */
+.cover h1 { font-size: var(--step-display); font-size: min(var(--step-display), 19cqi); line-height: 0.88; letter-spacing: -0.05em; max-width: 9ch; margin: 0; }
 .cover-id { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: start; }
+.cover-id > div { container-type: inline-size; }
 .cover .name { font-size: var(--step-lead); font-weight: 600; letter-spacing: -0.02em; margin: 24px 0 0; }
 .photo { display: block; width: 132px; height: 176px; object-fit: cover; padding: 5px; background: var(--paper-2); filter: var(--photo-filter); }
 .cover .actions { margin-top: 40px; }
@@ -256,7 +282,7 @@ main > section { padding: 96px 0; }
 .enclosed h2 { font-size: var(--step-lead); letter-spacing: -0.02em; line-height: 1.2; }
 .enclosed ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; padding: 0; }
 .enclosed a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; background: var(--paper-2); font-weight: 600; text-decoration: none; transition: background .15s, transform .1s; }
-.enclosed a:hover { background: var(--paper-3); }
+@media (hover: hover) and (pointer: fine) { .enclosed a:hover { background: var(--paper-3); } }
 
 /* Loose sheets: cover letter and skills */
 .sheet {
@@ -285,15 +311,17 @@ main > section { padding: 96px 0; }
 @media (min-width: 761px) {
   /* Each folder fills the screen below the tabs above it, so the next folder only slides over empty paper
      until the reader is past this one's text and link */
-  .stack .file { min-height: calc(100vh - (var(--i, 0) + 2) * 52px); }
+  .stack .file { min-height: calc(100vh - (var(--i, 0) + 2) * 52px); min-height: calc(100svh - (var(--i, 0) + 2) * 52px); }
   .stack .folder:last-child .file { min-height: 0; }
 }
 .tab {
-  display: inline-flex; align-items: center; height: 52px; padding: 0 34px; margin-left: var(--x, 0);
+  display: inline-flex; align-items: center; height: 52px; padding: 0 34px; margin-left: var(--x, 0); max-width: calc(100% - var(--x, 0px));
   background-color: var(--c); color: var(--t); font-weight: 600; text-decoration: none;
   clip-path: polygon(0 100%, 14px 0, calc(100% - 14px) 0, 100% 100%);
 }
-.tab:hover { text-decoration: underline; }
+@media (hover: hover) and (pointer: fine) { .tab:hover { text-decoration: underline; } }
+/* A tab is one row high (site.js stacks folders by that row), so a long label is cut short; the folder's title gives it in full */
+.tab span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 /* The tab's own clip-path would cut an outline, so the ring goes round the label instead */
 .tab:focus-visible { outline: none; }
 .tab:focus-visible span { outline: 3px solid currentColor; outline-offset: 4px; }
@@ -323,7 +351,7 @@ main > section { padding: 96px 0; }
   min-height: 44px; padding: 0 16px; border: 0; background: var(--field-2); color: var(--field-ink);
   font: inherit; font-size: var(--step-small); font-weight: 600; line-height: 1; cursor: pointer; transition: background .15s, color .15s, transform .1s;
 }
-.chips button:hover { background: var(--field-hover); }
+@media (hover: hover) and (pointer: fine) { .chips button:hover { background: var(--field-hover); } }
 .chips button[aria-pressed="true"] { background: var(--field-ink); color: var(--field); }
 .results { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 4px; }
 .results li { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; padding: 14px 20px; background: var(--field-2); }
@@ -335,28 +363,37 @@ main > section { padding: 96px 0; }
 .contact .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 48px; align-items: end; }
 .contact h2 { font-size: var(--step-display); line-height: 0.88; letter-spacing: -0.05em; }
 .contact p { margin: 20px 0 0; max-width: 32ch; }
-.biz { background: var(--sheet); color: var(--ink); padding: 32px 32px 0; display: grid; gap: 6px; }
+/* minmax(0, 1fr): with large text a long word wraps inside the card instead of widening it past the screen */
+.biz { background: var(--sheet); color: var(--ink); padding: 32px 32px 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
 .biz strong { font-size: var(--step-lead); font-weight: 800; letter-spacing: -0.03em; }
 .biz .role { color: var(--muted); margin-bottom: 16px; }
 .biz a[href^="mailto:"] { overflow-wrap: anywhere; }
 .biz .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 4px 0 24px; }
 .biz .btn { margin: 0 -32px; min-height: 56px; }
 
-/* Motion: the cover sheet slides out of the file, then each part rises in as it reaches the screen.
+/* Motion: the homepage cover sheet slides out of the file, then each part rises in as it reaches the screen.
+   Inner pages open still: a reader going from one case file to the next would see the same slide every time.
    Only with JavaScript and only when the visitor has not asked for less motion. */
 @media (prefers-reduced-motion: no-preference) {
-  .js .cs-head { animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; }
-  .js .reveal { transition: opacity .6s ease, transform .6s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
-  .js .reveal:not(.in) { opacity: 0; transform: translateY(24px); }
-  .results li:not([hidden]) { animation: row-in .3s ease both; }
+  .js .cover { animation: rise .5s var(--ease-out) both; }
+  /* Only the way in is animated: hiding happens at once, or a part already on screen would fade out and back */
+  .js .reveal.in { transition: opacity .5s var(--ease-out), transform .5s var(--ease-out); transition-delay: var(--d, 0s); }
+  .js .reveal:not(.in) { opacity: 0; transform: translateY(16px); }
+  /* Requirement rows drop in and lift out. Transitions, not keyframes, so a quick second click reverses mid-way.
+     site.js waits .15s before hiding a row that lifts out */
+  .results li { transition: opacity .2s var(--ease-out), transform .2s var(--ease-out); }
+  .results li.out { opacity: 0; transform: translateY(-6px); transition-duration: .15s; }
+  @starting-style { .results li { opacity: 0; transform: translateY(-6px); } }
 }
 /* Movement only, no fading: if animations never run, the cover is still fully visible */
-@keyframes rise { from { transform: translateY(40px); } }
-@keyframes row-in { from { opacity: 0; transform: translateY(-6px); } }
+@keyframes rise { from { transform: translateY(24px); } }
 
-/* Tablets: the case text gets the folder's full width */
+/* Tablets: the case text gets the folder's full width, and the contact heading moves above the card,
+   since beside it a word like "Konuşalım" would split. The card keeps its desktop width */
 @media (max-width: 1000px) {
   .file { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .contact .wrap { grid-template-columns: minmax(0, 1fr); }
+  .biz { max-width: 420px; }
 }
 @media (max-width: 760px) {
   main > section, .contact { padding: 72px 0; }
@@ -367,15 +404,15 @@ main > section { padding: 96px 0; }
   .photo { width: 84px; height: 112px; padding: 4px; }
   .fields div, .skills div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .folder { margin-bottom: 12px; }
-  .tab { margin-left: 0; height: 44px; padding: 0 16px; font-size: var(--step-small); }
+  .tab { margin-left: 0; max-width: 100%; height: 44px; padding: 0 16px; font-size: var(--step-small); }
   /* Tabs alternate sides, so two stacked folders can show their tabs side by side in one row */
   .folder:nth-child(even of .folder) .tab { display: flex; width: max-content; margin-left: auto; }
   .results li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-  .contact .wrap { grid-template-columns: minmax(0, 1fr); }
+  .biz { max-width: none; }
   .job { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-  /* All four tabs fit across a 390px phone */
-  .sections { gap: 4px; }
-  .sections a { padding: 10px 8px; }
+  /* All four tabs fit across a 360px phone; narrower ones scroll, with a fade at the cut edge */
+  .sections { gap: 3px; }
+  .sections a { padding: 10px 7px; }
   /* Keep clear air between the stitching and the text on narrow screens */
   .check, .contact { outline-offset: -8px; }
   .check .wrap, .contact .wrap { padding-left: 28px; padding-right: 28px; }
@@ -385,6 +422,10 @@ main > section { padding: 96px 0; }
 @media (max-width: 480px) {
   .cover-id { grid-template-columns: minmax(0, 1fr); }
   .photo { order: -1; }
+}
+/* The screen already breaks the title between words here; the 9ch cap would only split a long Turkish word */
+@media (max-width: 400px) {
+  .cover h1 { max-width: none; }
 }
 
 /* Windows high contrast replaces background colours, so shapes get a system-colour edge */
@@ -404,7 +445,7 @@ main > section { padding: 96px 0; }
     --sheet: #fff; --ink: #18202e; --muted: #545b66; --on-ink: #18202e; --ink-hover: #18202e; --brass: #fff; --photo-filter: none;
   }
   * { background-image: none !important; animation: none !important; }
-  .reveal { opacity: 1 !important; transform: none !important; }
+  .reveal, .results li { opacity: 1 !important; transform: none !important; }
   .theme-toggle, .lang, .top nav, .chips, .enclosed, .check .empty, .video, .sections { display: none !important; }
   .results li[hidden] { display: grid !important; }
   .check, .contact, .file { outline: none; }

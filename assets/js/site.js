@@ -21,12 +21,20 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.textContent = li.dataset.req;
-      function set(on) {
-        b.setAttribute('aria-pressed', on);
-        li.hidden = !on;
+      var leaving;
+      function hide(h) {
+        li.hidden = h;
         empty.hidden = !!document.querySelector('.results li:not([hidden])');
       }
-      set(start.indexOf(li.dataset.req) > -1);
+      // A row switched off fades out first (.out in site.css), then hides; switched back on in time, it just turns round
+      function set(on, now) {
+        b.setAttribute('aria-pressed', on);
+        clearTimeout(leaving);
+        li.classList.toggle('out', !on);
+        if (on || now || reduce) hide(!on);
+        else leaving = setTimeout(function () { hide(true); }, 150);
+      }
+      set(start.indexOf(li.dataset.req) > -1, true);
       b.addEventListener('click', function () { set(b.getAttribute('aria-pressed') !== 'true'); });
       chips.appendChild(b);
     });
@@ -70,22 +78,30 @@
       });
     };
     fit();
-    window.addEventListener('resize', fit);
+    // Phones fire resize while the address bar slides during a scroll; only a real size change can move the folders
+    var size = innerWidth + 'x' + probe.offsetHeight;
+    window.addEventListener('resize', function () {
+      var now = innerWidth + 'x' + probe.offsetHeight;
+      if (now !== size) { size = now; fit(); }
+    });
     if (document.fonts) document.fonts.ready.then(fit);
   }
 
   // Parts rise in as they reach the screen. Without IntersectionObserver, or with reduced motion, everything just shows.
-  // Stacking folders are left out: a half-faded folder sliding over another shows both at once
-  var parts = document.querySelectorAll('.letter, .files .section-head, .check h2, .check .intro, .chips, #experience .section-head, .job, #skills .sheet, .contact h2, .contact p, .biz, .prose .flow, .next');
+  // Stacking folders are left out: a half-faded folder sliding over another shows both at once.
+  // So are the next/previous links: they are controls, and should be there the moment the reader reaches the end
+  var parts = document.querySelectorAll('.letter, .files .section-head, .check h2, .check .intro, .chips, #experience .section-head, .job, #skills .sheet, .contact h2, .contact p, .biz, .prose .flow');
   if (!reduce && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
     }, { rootMargin: '0px 0px -8% 0px' });
-    parts.forEach(function (el, i) {
+    // The contact parts arrive together, so they come in one after another, heading first
+    var next = 0;
+    parts.forEach(function (el) {
       el.classList.add('reveal');
-      if (el.closest('.contact')) el.style.setProperty('--d', (i % 3) * 0.09 + 's');
+      if (el.closest('.contact')) el.style.setProperty('--d', next++ * 0.06 + 's');
       io.observe(el);
     });
   }
@@ -100,6 +116,9 @@
       var h = document.getElementById(a.hash.slice(1));
       if (h) heads.push(h);
     });
+    // On narrow phones the tabs scroll sideways: fade the edge while more are hidden to the right
+    var edge = function () { nav.classList.toggle('more', nav.scrollLeft + nav.clientWidth < nav.scrollWidth - 4); };
+    var shown;
     var update = function () {
       var current = null;
       heads.forEach(function (h) { if (h.getBoundingClientRect().top <= innerHeight * 0.25) current = h; });
@@ -108,10 +127,22 @@
         if (current && a.hash === '#' + current.id) a.setAttribute('aria-current', 'location');
         else a.removeAttribute('aria-current');
       });
+      // Bring a newly marked tab into view, but leave the strip alone otherwise so a reader's own swipe sticks
+      var a = nav.querySelector('[aria-current]');
+      if (a && a !== shown) {
+        var left = nav.scrollLeft;
+        if (a.offsetLeft < left) left = a.offsetLeft;
+        else if (a.offsetLeft + a.offsetWidth > left + nav.clientWidth) left = a.offsetLeft + a.offsetWidth - nav.clientWidth;
+        // The strip slides over, so the reader sees where the marked tab came from
+        if (left !== nav.scrollLeft) nav.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' });
+      }
+      shown = a;
+      edge();
     };
     // Four headings to measure, so running on every scroll event is cheap
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
+    nav.addEventListener('scroll', edge, { passive: true });
     update();
   }
 })();
