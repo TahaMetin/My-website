@@ -1,31 +1,31 @@
-/* A leather document file: navy leather cover, saddle-tan leather folders, ivory paper, brass hardware.
+/* A leather document file: navy leather cover, saddle-tan leather folders, cream kraft paper, brass hardware.
    The dark theme keeps the same cool-leather, warm-paper contrast: graphite and dark kraft paper on navy-black leather.
    Light values first. Dark values follow twice: once for the OS setting, once for a saved choice.
    Plain values instead of light-dark() so older browsers (Safari before 17.5) still get colours. */
 :root {
   color-scheme: light;
-  --field: #1a2539;
+  --field: #101c2f;
   --field-2: #26344d;
   --field-hover: #33435f;
   --field-ink: #ece6da;
-  --tan: #7a4a26;
+  --tan: #71421e;
   --tan-ink: #f3ece0;
   --brass: #b38b4d;
   --brass-hover: #c49c5d;
   --on-brass: #18202e;
-  --paper: #eeebe4;
-  --paper-2: #e2ddd3;
-  --paper-3: #d4cdc0;
-  --paper-4: #c7bfb0;
-  --sheet: #f8f6f1;
+  --paper: #f1ebdd;
+  --paper-2: #e6ddc9;
+  --paper-3: #daccb2;
+  --paper-4: #cdbea0;
+  --sheet: #faf6ec;
   --ink: #18202e;
   --muted: #545b66;
   --on-ink: #f8f6f1;
   --ink-hover: #26344d;
   --stitch: rgba(236, 230, 218, 0.42);
   --photo-filter: none;
-  /* Leather grain: generated noise, no image file */
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  /* Leather grain: generated noise, no image file. Light speckles in both themes, because the leather is dark in both */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .4 -.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   --cut: 24px;
   --max: 1120px;
   --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
@@ -44,7 +44,6 @@
     --stitch: rgba(236, 229, 216, 0.3);
     /* The studio photo's white background would be the brightest thing on a dark page */
     --photo-filter: brightness(0.88);
-    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .4 -.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   }
 }
 :root[data-theme="dark"] {
@@ -55,7 +54,6 @@
   --sheet: #2f2a23; --ink: #ece5d8; --muted: #b3aa9a; --on-ink: #2a2620; --ink-hover: #ffffff;
   --stitch: rgba(236, 229, 216, 0.3);
   --photo-filter: brightness(0.88);
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .4 -.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
 /* Self-hosted so no visit calls Google. Latin-ext only downloads for Turkish letters such as ğ, ş and İ */
