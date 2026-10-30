@@ -243,6 +243,10 @@ main > section { padding: 120px 0; }
 /* Folders stack only where every one fits on screen; the homepage script adds .stack after measuring */
 @media (min-width: 761px) {
   .stack .folder { position: sticky; top: calc(var(--i, 0) * 52px); }
+  /* Each folder fills the screen below the tabs above it, so the next folder only slides over empty paper
+     until the reader is past this one's text and link */
+  .stack .file { min-height: calc(100vh - (var(--i, 0) + 1) * 52px); }
+  .stack .folder:last-child .file { min-height: 0; }
 }
 .tab {
   display: inline-flex; align-items: center; height: 52px; padding: 0 34px; margin-left: var(--x, 0);
@@ -326,7 +330,13 @@ main > section { padding: 120px 0; }
   .results li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .contact .wrap { grid-template-columns: minmax(0, 1fr); }
   .job { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-  .sections a { padding: 10px 12px; }
+  /* All four tabs fit across a 390px phone */
+  .sections { gap: 4px; }
+  .sections a { padding: 10px 8px; }
+  /* Keep clear air between the stitching and the text on narrow screens */
+  .check, .contact { outline-offset: -8px; }
+  .check .wrap, .contact .wrap { padding-left: 28px; padding-right: 28px; }
+  .tone-2 .file, .tone-4 .file { outline-offset: -7px; padding-left: 26px; padding-right: 26px; }
 }
 /* Small phones: the photo moves above the title so the title keeps the full width */
 @media (max-width: 480px) {

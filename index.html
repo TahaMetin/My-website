@@ -341,7 +341,7 @@
         files.classList.add('stack'); // measure with the stacked sizes applied
         var ok = wide.matches;
         for (var k = 0; ok && k < folders.length - 1; k++) {
-          if (k * 52 + folders[k].offsetHeight > window.innerHeight) ok = false;
+          if (k * 52 + folders[k].offsetHeight > window.innerHeight + 1) ok = false;
         }
         files.classList.toggle('stack', ok);
       }
