@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Canlı Ortam Desteği · Taha Metin</title>
+  <meta name="description" content="Vaka çalışması: bankacılık servisleri için canlı ortam desteği, OpenShift üzerinde Log4j2 log analizi, SLA içinde hotfix'ler ve CI/CD sürümleri." />
+  <link rel="canonical" href="https://tahametin.dev/tr/case-studies/production-support.html" />
+  <link rel="alternate" hreflang="en" href="https://tahametin.dev/case-studies/production-support.html" />
+  <link rel="alternate" hreflang="tr" href="https://tahametin.dev/tr/case-studies/production-support.html" />
+  <link rel="alternate" hreflang="x-default" href="https://tahametin.dev/case-studies/production-support.html" />
+  <meta property="og:image" content="https://tahametin.dev/assets/images/share.jpg" />
+  <meta property="og:image:alt" content="Muhammed Taha Metin, Backend Engineer" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="../../assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../../assets/fonts/schibsted-grotesk-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../../assets/css/site.css?v=20261030" />
+  <script src="../../assets/js/theme.js?v=20261030"></script>
+  <script src="../../assets/js/site.js?v=20261030" defer></script>
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Taha Metin</a>
+      <nav aria-label="Ana menü">
+        <a href="../index.html#work">Vaka dosyaları</a>
+        <a class="opt" href="../index.html#experience">Deneyim</a>
+        <a href="../index.html#contact">İletişim</a>
+      </nav>
+      <a class="lang" href="../../case-studies/production-support.html" hreflang="en" lang="en" aria-label="EN, English">EN</a>
+      <button class="theme-toggle" type="button" aria-label="Koyu tema" title="Koyu temayı aç/kapat">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="cs-field">
+    <div class="cs-head">
+      <div class="sheet-head"><span>Vaka çalışması</span><span>Softtech</span></div>
+      <h1>Canlı ortam desteği ve sürümler</h1>
+      <p class="lede">Bankacılık servislerini canlıda sağlıklı tutmak: OpenShift üzerinde Log4j2 loglarıyla sorunların izini sürmek, incident kayıtlarını SLA içinde çözmek ve sürümlerle hotfix'leri canlıya kadar desteklemek.</p>
+      <dl class="meta">
+        <div><dt>Rol</dt><dd>Yazılım Mühendisi</dd></div>
+        <div><dt>Platform</dt><dd>OpenShift, Log4j2</dd></div>
+        <div><dt>Teslimat</dt><dd>Azure DevOps (TFS), Digital.ai Release</dd></div>
+      </dl>
+    </div>
+    </div>
+
+    <div class="sheet-col">
+    <nav class="sections" aria-label="Bu sayfada"><a href="#context">Bağlam</a><a href="#role">Rolüm</a><a href="#what-i-did">Yaptıklarım</a><a href="#outcome">Sonuç</a></nav>
+
+    <article class="prose">
+      <h2 id="context">Bağlam</h2>
+      <p>Bankacılık servisleri günün her saati çalışır. Canlıda bir şey bozulduğunda incident kaydı bir SLA ile gelir ve düzeltmenin yine diğer tüm değişikliklerle aynı sürüm sürecinden geçmesi gerekir.</p>
+
+      <div class="flow" role="img" aria-label="Incident kaydından OpenShift'te log analizine, düzeltme ya da hotfix'e, Azure DevOps'ta CI/CD'ye, Digital.ai Release'e ve canlı ortama"><span>Incident kaydı</span><i>→</i><span>OpenShift'te Log4j2 log analizi</span><i>→</i><span>Düzeltme ya da hotfix</span><i>→</i><span>Azure DevOps'ta CI/CD</span><i>→</i><span>Digital.ai Release</span><i>→</i><span>Canlı ortam</span></div>
+
+      <h2 id="role">Rolüm</h2>
+      <p>Üzerinde çalıştığım servisler için, ilk incelemeden düzeltmenin canlıya ulaşmasına kadar canlı ortam desteği verdim.</p>
+
+      <h2 id="what-i-did">Yaptıklarım</h2>
+      <ul>
+        <li>OpenShift üzerinde çalışan servislerin Log4j2 loglarını analiz ederek canlı ortam sorunlarının izini sürdüm.</li>
+        <li>Hata düzeltmeleri ve hotfix'ler çıkararak incident kayıtlarını SLA içinde çözdüm.</li>
+        <li>Azure DevOps ve Digital.ai Release'teki CI/CD pipeline'ları üzerinden canlıya kadar sürümlere ve hotfix'lere destek verdim.</li>
+        <li>Başarısız deployment'ları giderdim ve geçmeleri için sürüm ekibiyle koordinasyon kurdum.</li>
+      </ul>
+
+      <h2 id="outcome">Sonuç</h2>
+      <p>Incident kayıtları SLA içinde çözüldü ve düzeltmeler standart sürüm pipeline'ı üzerinden canlıya ulaştı.</p>
+
+      <p class="note">Ayrıntılar müşteri gizliliği gereği genelleştirildi. Müşteri verisi gösterilmiyor.</p>
+    </article>
+
+    <div class="next">
+      <a href="java-21-migration.html">← Java 21 geçişi</a>
+      <a href="data-migration.html">Sonraki: Müşteri verisi taşıma →</a>
+    </div>
+    </div>
+  </main>
+</body>
+
+</html>

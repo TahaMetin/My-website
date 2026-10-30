@@ -58,6 +58,29 @@
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .4 -.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
+/* Self-hosted so no visit calls Google. Latin-ext only downloads for Turkish letters such as ğ, ş and İ */
+@font-face {
+  font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("../fonts/schibsted-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("../fonts/schibsted-grotesk-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Book face for the cover letter only */
+@font-face {
+  font-family: "Source Serif 4"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/source-serif-4-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Source Serif 4"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/source-serif-4-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 
@@ -111,8 +134,21 @@ main > section { padding: 96px 0; }
   cursor: pointer; transition: background .15s;
 }
 .js .theme-toggle { display: inline-flex; }
-.theme-toggle:hover { background: var(--field-hover); }
-@media (max-width: 600px) { .top nav .opt { display: none; } .top nav { gap: 4px 16px; } }
+.theme-toggle:hover, .lang:hover { background: var(--field-hover); }
+/* Language switch: a plain link, so it works without JavaScript */
+.lang {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 40px; height: 40px;
+  background: var(--field-2); color: var(--field-ink); font-size: var(--step-small); font-weight: 700; text-decoration: none; transition: background .15s;
+}
+.lang + .theme-toggle { margin-left: -8px; }
+/* Phones: name and the two buttons on the first row, the menu on its own row below, so the buttons never split up.
+   640px rather than 600px because the Turkish menu is wider */
+@media (max-width: 640px) {
+  .top nav .opt { display: none; }
+  .top .wrap { row-gap: 6px; }
+  .top nav { gap: 4px 16px; order: 1; flex-basis: 100%; margin-left: 0; }
+  .lang, .top nav + .theme-toggle { margin-left: auto; }
+}
 
 /* Buttons: the primary one is brass, like the file's hardware */
 .actions { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -232,6 +268,7 @@ main > section { padding: 96px 0; }
 .sheet > h2 { margin-bottom: 40px; }
 .letter { max-width: 680px; }
 .letter p { margin-bottom: 1.25rem; }
+.letter p:not(.sign) { font-family: "Source Serif 4", Georgia, "Times New Roman", serif; font-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem); line-height: 1.6; letter-spacing: 0; }
 .sign { display: grid; gap: 2px; margin: 40px 0 0; }
 .sign strong { font-size: var(--step-lead); font-weight: 800; letter-spacing: -0.03em; }
 .sign span { color: var(--muted); font-size: var(--step-small); }
@@ -348,7 +385,7 @@ main > section { padding: 96px 0; }
 
 /* Windows high contrast replaces background colours, so shapes get a system-colour edge */
 @media (forced-colors: active) {
-  .btn, .chips button, .theme-toggle, .enclosed a, .tab, .cs-head, .sheet, .file, .biz, .results li,
+  .btn, .chips button, .theme-toggle, .lang, .enclosed a, .tab, .cs-head, .sheet, .file, .biz, .results li,
   .flow span, .sections a, .next a { border: 1px solid CanvasText; } /* taste-skill-ignore */
   .chips button[aria-pressed="true"], .sections a[aria-current] { forced-color-adjust: none; background: Highlight; color: HighlightText; }
 }
@@ -364,7 +401,7 @@ main > section { padding: 96px 0; }
   }
   * { background-image: none !important; animation: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
-  .theme-toggle, .top nav, .chips, .enclosed, .check .empty, .video, .sections { display: none !important; }
+  .theme-toggle, .lang, .top nav, .chips, .enclosed, .check .empty, .video, .sections { display: none !important; }
   .results li[hidden] { display: grid !important; }
   .check, .contact, .file { outline: none; }
   main > section, .contact { padding: 32px 0; }

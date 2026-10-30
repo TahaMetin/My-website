@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ticari Kredi Entegrasyonu · Taha Metin</title>
+  <meta name="description" content="Vaka çalışması: veriyi Java backend'lere, Oracle'a ve ticari kredi karar motoruna yönlendiren webMethods ESB akış servisleri." />
+  <link rel="canonical" href="https://tahametin.dev/tr/case-studies/integration-flow.html" />
+  <link rel="alternate" hreflang="en" href="https://tahametin.dev/case-studies/integration-flow.html" />
+  <link rel="alternate" hreflang="tr" href="https://tahametin.dev/tr/case-studies/integration-flow.html" />
+  <link rel="alternate" hreflang="x-default" href="https://tahametin.dev/case-studies/integration-flow.html" />
+  <meta property="og:image" content="https://tahametin.dev/assets/images/share.jpg" />
+  <meta property="og:image:alt" content="Muhammed Taha Metin, Backend Engineer" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="../../assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../../assets/fonts/schibsted-grotesk-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../../assets/css/site.css?v=20261030" />
+  <script src="../../assets/js/theme.js?v=20261030"></script>
+  <script src="../../assets/js/site.js?v=20261030" defer></script>
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Taha Metin</a>
+      <nav aria-label="Ana menü">
+        <a href="../index.html#work">Vaka dosyaları</a>
+        <a class="opt" href="../index.html#experience">Deneyim</a>
+        <a href="../index.html#contact">İletişim</a>
+      </nav>
+      <a class="lang" href="../../case-studies/integration-flow.html" hreflang="en" lang="en" aria-label="EN, English">EN</a>
+      <button class="theme-toggle" type="button" aria-label="Koyu tema" title="Koyu temayı aç/kapat">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="cs-field">
+    <div class="cs-head">
+      <div class="sheet-head"><span>Vaka çalışması</span><span>Softtech</span></div>
+      <h1>Ticari kredi karar entegrasyonu</h1>
+      <p class="lede">Integration Server (ESB) üzerindeki webMethods akış servisleri, yeni geliştirilen servislerden gelen veriyi Java backend'lere yönlendiriyor; veri orada Oracle'a yazılıyor ya da ticari kredi skorlaması ve değerlendirmesi için karar motorunda işleniyor.</p>
+      <dl class="meta">
+        <div><dt>Rol</dt><dd>Yazılım Mühendisi</dd></div>
+        <div><dt>Teknolojiler</dt><dd>webMethods Integration Server ve Designer, Java, Spring Boot, Oracle</dd></div>
+        <div><dt>Arayüzler</dt><dd>SOAP (WSDL, XSD, XML), REST, senkron ve asenkron</dd></div>
+      </dl>
+    </div>
+    </div>
+
+    <div class="sheet-col">
+    <nav class="sections" aria-label="Bu sayfada"><a href="#context">Bağlam</a><a href="#role">Rolüm</a><a href="#what-i-did">Yaptıklarım</a><a href="#outcome">Sonuç</a></nav>
+
+    <article class="prose">
+      <h2 id="context">Bağlam</h2>
+      <p>Ticari kredi başvuruları, karar verilmeden önce kredi skorlama ve değerlendirmeden geçer. Bu veriyi üreten yeni servislerin mevcut Java backend'lere ve karar motoruna ulaşması gerekiyordu. Aralarında kurumsal servis yolu (ESB) olarak webMethods Integration Server duruyor.</p>
+
+      <div class="flow" role="img" aria-label="Yeni servisten ESB üzerindeki webMethods akış servisine, oradan Java backend'e, sonra Oracle veritabanına ya da kredi skorlama karar motoruna"><span>Yeni servis</span><i>→</i><span>webMethods akış servisi (ESB)</span><i>→</i><span>Java / Spring Boot backend</span><i>→</i><span>Oracle DB</span><i class="or">ya da</i><span>Karar motoru: kredi skorlama</span></div>
+
+      <h2 id="role">Rolüm</h2>
+      <p>webMethods akış servislerini ve alıcı taraftaki Spring Boot servislerini geliştirdim. Yani verinin alınmasından kalıcı olarak yazılmasına ya da karar sürecine aktarılmasına kadar tüm yol üzerinde çalıştım.</p>
+
+      <h2 id="what-i-did">Yaptıklarım</h2>
+      <ul>
+        <li>webMethods Designer'da yeni servislerden gelen veriyi alan ve backend'lerin beklediği sözleşmelere eşleyen akış servisleri geliştirdim.</li>
+        <li>REST uç noktalarının yanında WSDL ve XSD ile tanımlanmış SOAP sözleşmeleriyle çalıştım.</li>
+        <li>Mesajları hem senkron hem asenkron iletişimle doğru Java backend'e yönlendirdim.</li>
+        <li>Veriyi Oracle'a yazan ya da kredi skorlaması ve değerlendirmesi için karar motoruna ileten Spring Boot mikroservislerini geliştirdim ve bakımını yaptım.</li>
+        <li>Servisleri SoapUI ve Postman ile test ettim; incident kayıtlarını çözmek için hataların akış boyunca izini sürdüm.</li>
+      </ul>
+
+      <h2 id="outcome">Sonuç</h2>
+      <p>Yeni servisler, her biri her backend'e doğrudan bağlanmak yerine tek bir entegrasyon katmanı üzerinden mevcut backend'leri ve ticari kredi karar motorunu besliyor.</p>
+
+      <p class="note">Ayrıntılar müşteri gizliliği gereği genelleştirildi. Müşteri verisi gösterilmiyor.</p>
+    </article>
+
+    <div class="next">
+      <a href="../index.html#work">← Tüm vaka çalışmaları</a>
+      <a href="java-21-migration.html">Sonraki: Java 21 geçişi →</a>
+    </div>
+    </div>
+  </main>
+</body>
+
+</html>

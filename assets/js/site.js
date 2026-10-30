@@ -2,6 +2,55 @@
 (function () {
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Visit counts without cookies, so no consent banner is needed. It skips localhost by itself.
+  // Links with data-goatcounter-click are counted as events (CV downloads, email, profiles).
+  var gc = document.createElement('script');
+  gc.async = true;
+  gc.src = 'https://gc.zgo.at/count.v4.js';
+  gc.integrity = 'sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+';
+  gc.crossOrigin = 'anonymous';
+  gc.setAttribute('data-goatcounter', 'https://tahametin.goatcounter.com/count');
+  document.head.appendChild(gc);
+
+  // Requirement check on the homepage: each chip shows or hides its row; without JS the whole list stays visible
+  var chips = document.querySelector('.chips');
+  if (chips) {
+    var empty = document.querySelector('.check .empty');
+    var start = ['Java 21', 'Spring Boot', 'SOAP', 'Oracle'];
+    document.querySelectorAll('.results li').forEach(function (li) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = li.dataset.req;
+      function set(on) {
+        b.setAttribute('aria-pressed', on);
+        li.hidden = !on;
+        empty.hidden = !!document.querySelector('.results li:not([hidden])');
+      }
+      set(start.indexOf(li.dataset.req) > -1);
+      b.addEventListener('click', function () { set(b.getAttribute('aria-pressed') !== 'true'); });
+      chips.appendChild(b);
+    });
+    chips.hidden = false;
+  }
+
+  // Case files stack only when each folder fits under the tabs above it; otherwise part of a folder could never be seen
+  var files = document.querySelector('.files');
+  if (files) {
+    var folders = files.querySelectorAll('.folder');
+    var wide = window.matchMedia('(min-width: 761px)');
+    var fit = function () {
+      files.classList.add('stack'); // measure with the stacked sizes applied
+      var ok = wide.matches;
+      for (var k = 0; ok && k < folders.length - 1; k++) {
+        if (k * 52 + folders[k].offsetHeight > window.innerHeight + 1) ok = false;
+      }
+      files.classList.toggle('stack', ok);
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    if (document.fonts) document.fonts.ready.then(fit);
+  }
+
   // Parts rise in as they reach the screen. Without IntersectionObserver, or with reduced motion, everything just shows.
   // Stacking folders are left out: a half-faded folder sliding over another shows both at once
   var parts = document.querySelectorAll('.letter, .files .section-head, .check h2, .check .intro, .chips, #experience .section-head, .job, #skills .sheet, .contact h2, .contact p, .biz, .prose .flow, .next');
