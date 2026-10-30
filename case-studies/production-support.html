@@ -15,11 +15,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Production Support · Taha Metin</title>
   <meta name="description" content="Case study: production support for banking services, Log4j2 log analysis on OpenShift, hotfixes within SLA and CI/CD releases." />
+  <meta property="og:image" content="https://tahametin.dev/assets/images/share.jpg" />
+  <meta property="og:image:alt" content="Muhammed Taha Metin, Backend Engineer" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/site.css?v=20261030" />
   <script src="../assets/js/theme.js?v=20261030"></script>
+  <script src="../assets/js/site.js?v=20261030" defer></script>
 </head>
 
 <body>
@@ -52,8 +56,10 @@
     </div>
 
     <div class="sheet-col">
+    <nav class="sections" aria-label="On this page"><a href="#context">Context</a><a href="#role">My role</a><a href="#what-i-did">What I did</a><a href="#outcome">Outcome</a></nav>
+
     <article class="prose">
-      <h2>Context</h2>
+      <h2 id="context">Context</h2>
       <p>Banking services run around the clock. When something fails in production, the incident record comes with an SLA, and the fix still has to go through the same release process as any other change.</p>
 
       <div class="flow" role="img" aria-label="Incident record to log analysis on OpenShift to fix or hotfix to CI/CD in Azure DevOps to Digital.ai Release to production">
@@ -65,10 +71,10 @@
         <i>→</i><span>Production</span>
       </div>
 
-      <h2>My role</h2>
+      <h2 id="role">My role</h2>
       <p>I provided production support for the services I worked on, from the first investigation to the fix reaching production.</p>
 
-      <h2>What I did</h2>
+      <h2 id="what-i-did">What I did</h2>
       <ul>
         <li>Traced production issues by analysing the Log4j2 logs of services running on OpenShift.</li>
         <li>Delivered bug fixes and hotfixes, resolving incident records within SLA.</li>
@@ -76,7 +82,7 @@
         <li>Troubleshot failed deployments and coordinated with the release team to get them through.</li>
       </ul>
 
-      <h2>Outcome</h2>
+      <h2 id="outcome">Outcome</h2>
       <p>Incident records were resolved within SLA, and fixes reached production through the standard release pipeline.</p>
 
       <p class="note">Details are generalised to respect client confidentiality. No customer data is shown.</p>

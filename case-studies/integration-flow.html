@@ -15,11 +15,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Commercial Loan Integration · Taha Metin</title>
   <meta name="description" content="Case study: webMethods ESB flow services routing data to Java backends, Oracle and a commercial loan credit decision engine." />
+  <meta property="og:image" content="https://tahametin.dev/assets/images/share.jpg" />
+  <meta property="og:image:alt" content="Muhammed Taha Metin, Backend Engineer" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/site.css?v=20261030" />
   <script src="../assets/js/theme.js?v=20261030"></script>
+  <script src="../assets/js/site.js?v=20261030" defer></script>
 </head>
 
 <body>
@@ -52,8 +56,10 @@
     </div>
 
     <div class="sheet-col">
+    <nav class="sections" aria-label="On this page"><a href="#context">Context</a><a href="#role">My role</a><a href="#what-i-did">What I did</a><a href="#outcome">Outcome</a></nav>
+
     <article class="prose">
-      <h2>Context</h2>
+      <h2 id="context">Context</h2>
       <p>Commercial loan applications go through credit scoring and evaluation before a decision is made. New services producing that data had to reach the existing Java backends and the decision engine. webMethods Integration Server sits between them as the enterprise service bus.</p>
 
       <div class="flow" role="img" aria-label="New service to webMethods flow service on the ESB to Java backend, then to Oracle DB or the credit scoring decision engine">
@@ -61,14 +67,14 @@
         <i>→</i><span>webMethods flow service (ESB)</span>
         <i>→</i><span>Java / Spring Boot backend</span>
         <i>→</i><span>Oracle DB</span>
-        <i>or</i>
+        <i class="or">or</i>
         <span>Decision engine: credit scoring</span>
       </div>
 
-      <h2>My role</h2>
+      <h2 id="role">My role</h2>
       <p>I built the webMethods flow services and developed the Spring Boot services on the receiving end, so I worked on the whole path from consuming the data to handing it over for persistence or decisioning.</p>
 
-      <h2>What I did</h2>
+      <h2 id="what-i-did">What I did</h2>
       <ul>
         <li>Built flow services in webMethods Designer that consume data from the new services and map it to the contracts the backends expect.</li>
         <li>Worked with SOAP contracts defined in WSDL and XSD alongside REST endpoints.</li>
@@ -77,7 +83,7 @@
         <li>Tested services with SoapUI and Postman, and traced defects along the flow to resolve incident records.</li>
       </ul>
 
-      <h2>Outcome</h2>
+      <h2 id="outcome">Outcome</h2>
       <p>New services feed the existing backends and the commercial loan decision engine through a single integration layer, instead of each one wiring itself directly to every backend.</p>
 
       <p class="note">Details are generalised to respect client confidentiality. No customer data is shown.</p>

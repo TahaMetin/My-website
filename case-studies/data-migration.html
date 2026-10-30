@@ -15,11 +15,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Customer Data Migration · Taha Metin</title>
   <meta name="description" content="Case study: scheduled IBM DataStage ETL jobs migrating customer data across enterprise databases into Oracle." />
+  <meta property="og:image" content="https://tahametin.dev/assets/images/share.jpg" />
+  <meta property="og:image:alt" content="Muhammed Taha Metin, Backend Engineer" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/site.css?v=20261030" />
   <script src="../assets/js/theme.js?v=20261030"></script>
+  <script src="../assets/js/site.js?v=20261030" defer></script>
 </head>
 
 <body>
@@ -52,8 +56,10 @@
     </div>
 
     <div class="sheet-col">
+    <nav class="sections" aria-label="On this page"><a href="#context">Context</a><a href="#role">My role</a><a href="#what-i-did">What I did</a><a href="#outcome">Outcome</a></nav>
+
     <article class="prose">
-      <h2>Context</h2>
+      <h2 id="context">Context</h2>
       <p>Customer data held across several enterprise databases had to be brought into Oracle so that the services built on top of it could use it.</p>
 
       <div class="flow" role="img" aria-label="Enterprise databases to DataStage ETL jobs to Oracle">
@@ -62,10 +68,10 @@
         <i>→</i><span>Oracle DB</span>
       </div>
 
-      <h2>My role</h2>
+      <h2 id="role">My role</h2>
       <p>I built the DataStage ETL jobs for the migration and set them up to run as scheduled batch jobs.</p>
 
-      <h2>What I did</h2>
+      <h2 id="what-i-did">What I did</h2>
       <ul>
         <li>Built jobs that extract customer records from the source enterprise databases.</li>
         <li>Transformed the data to fit the target Oracle schema.</li>
@@ -73,7 +79,7 @@
         <li>Configured batch job scheduling so the migration runs as scheduled batches.</li>
       </ul>
 
-      <h2>Outcome</h2>
+      <h2 id="outcome">Outcome</h2>
       <p>Customer data became available in Oracle for the services that depend on it.</p>
 
       <p class="note">Details are generalised to respect client confidentiality. No customer data is shown.</p>

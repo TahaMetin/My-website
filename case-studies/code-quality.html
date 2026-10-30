@@ -15,11 +15,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Code Quality · Taha Metin</title>
   <meta name="description" content="Case study: JUnit 5 and Mockito unit tests, JaCoCo coverage, SonarQube findings and AI-assisted development." />
+  <meta property="og:image" content="https://tahametin.dev/assets/images/share.jpg" />
+  <meta property="og:image:alt" content="Muhammed Taha Metin, Backend Engineer" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/site.css?v=20261030" />
   <script src="../assets/js/theme.js?v=20261030"></script>
+  <script src="../assets/js/site.js?v=20261030" defer></script>
 </head>
 
 <body>
@@ -52,14 +56,18 @@
     </div>
 
     <div class="sheet-col">
+    <nav class="sections" aria-label="On this page"><a href="#context">Context</a><a href="#role">My role</a><a href="#what-i-did">What I did</a><a href="#outcome">Outcome</a></nav>
+
     <article class="prose">
-      <h2>Context</h2>
+      <h2 id="context">Context</h2>
       <p>Banking services live for a long time and change often. Low test coverage and open static-analysis findings make every change riskier and slow down reviews.</p>
 
-      <h2>My role</h2>
+      <div class="flow" role="img" aria-label="Unit tests with JUnit 5 and Mockito, coverage measured with JaCoCo, SonarQube findings resolved, then code review in the Scrum team"><span>Unit tests: JUnit 5, Mockito</span><i>→</i><span>Coverage: JaCoCo</span><i>→</i><span>SonarQube findings resolved</span><i>→</i><span>Code review in the Scrum team</span></div>
+
+      <h2 id="role">My role</h2>
       <p>Alongside feature work, I took on improving the test coverage and SonarQube results of the services I worked on.</p>
 
-      <h2>What I did</h2>
+      <h2 id="what-i-did">What I did</h2>
       <ul>
         <li>Wrote unit tests with JUnit 5, using Mockito to isolate services from their dependencies.</li>
         <li>Measured coverage with JaCoCo and targeted untested paths to raise it.</li>
@@ -68,7 +76,7 @@
         <li>Used a company-hosted OpenCode setup to speed up coding, test writing and debugging, reviewing every suggestion before it went in.</li>
       </ul>
 
-      <h2>Outcome</h2>
+      <h2 id="outcome">Outcome</h2>
       <p>Higher measured coverage and fewer open SonarQube findings on the services I touched, giving the team more confidence when shipping changes.</p>
 
       <p class="note">Details are generalised to respect client confidentiality. No customer data is shown.</p>

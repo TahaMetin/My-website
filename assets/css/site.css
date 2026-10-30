@@ -1,20 +1,29 @@
-/* Light values first. Dark values follow twice: once for the OS setting, once for a saved choice.
+/* A leather document file: navy leather cover, saddle-tan leather folders, ivory paper, brass hardware.
+   Light values first. Dark values follow twice: once for the OS setting, once for a saved choice.
    Plain values instead of light-dark() so older browsers (Safari before 17.5) still get colours. */
 :root {
   color-scheme: light;
-  --field: #14284b;
-  --field-2: #1f3a66;
-  --field-hover: #2b4b7e;
-  --field-ink: #e8e6e1;
-  --paper: #e8e6e1;
-  --paper-2: #d8d4cc;
-  --paper-3: #c7c2b8;
-  --paper-4: #b9b3a8;
-  --sheet: #f5f3ef;
-  --ink: #14284b;
-  --muted: #4d5a70;
-  --on-ink: #f5f3ef;
-  --ink-hover: #1f3a66;
+  --field: #1a2539;
+  --field-2: #26344d;
+  --field-hover: #33435f;
+  --field-ink: #ece6da;
+  --tan: #7a4a26;
+  --tan-ink: #f3ece0;
+  --brass: #b38b4d;
+  --brass-hover: #c49c5d;
+  --on-brass: #18202e;
+  --paper: #eeebe4;
+  --paper-2: #e2ddd3;
+  --paper-3: #d4cdc0;
+  --paper-4: #c7bfb0;
+  --sheet: #f8f6f1;
+  --ink: #18202e;
+  --muted: #545b66;
+  --on-ink: #f8f6f1;
+  --ink-hover: #26344d;
+  --stitch: rgba(236, 230, 218, 0.42);
+  /* Leather grain: generated noise, no image file */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   --cut: 24px;
   --max: 1120px;
   --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
@@ -26,16 +35,20 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --field: #070f1d; --field-2: #13233d; --field-hover: #1f3354; --field-ink: #e3e1dc;
-    --paper: #0e192b; --paper-2: #17253c; --paper-3: #213250; --paper-4: #2b3e5e;
-    --sheet: #142037; --ink: #e3e1dc; --muted: #a3adbd; --on-ink: #0e192b; --ink-hover: #ffffff;
+    --field: #0a0f19; --field-2: #172131; --field-hover: #222e43; --field-ink: #e9e2d4;
+    --tan: #6f4323; --tan-ink: #f0e8da; --brass: #c9a66b; --brass-hover: #d8b77e;
+    --paper: #151e2d; --paper-2: #1d2738; --paper-3: #263246; --paper-4: #303d53;
+    --sheet: #1a2333; --ink: #e9e2d4; --muted: #a7adb8; --on-ink: #151e2d; --ink-hover: #ffffff;
+    --stitch: rgba(233, 226, 212, 0.24);
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --field: #070f1d; --field-2: #13233d; --field-hover: #1f3354; --field-ink: #e3e1dc;
-  --paper: #0e192b; --paper-2: #17253c; --paper-3: #213250; --paper-4: #2b3e5e;
-  --sheet: #142037; --ink: #e3e1dc; --muted: #a3adbd; --on-ink: #0e192b; --ink-hover: #ffffff;
+  --field: #0a0f19; --field-2: #172131; --field-hover: #222e43; --field-ink: #e9e2d4;
+  --tan: #6f4323; --tan-ink: #f0e8da; --brass: #c9a66b; --brass-hover: #d8b77e;
+  --paper: #151e2d; --paper-2: #1d2738; --paper-3: #263246; --paper-4: #303d53;
+  --sheet: #1a2333; --ink: #e9e2d4; --muted: #a7adb8; --on-ink: #151e2d; --ink-hover: #ffffff;
+  --stitch: rgba(233, 226, 212, 0.24);
 }
 
 * { box-sizing: border-box; }
@@ -44,7 +57,7 @@
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition: none !important; }
+  * { transition: none !important; animation: none !important; }
 }
 
 body {
@@ -61,7 +74,7 @@ a { color: inherit; text-underline-offset: 4px; }
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 .top :focus-visible, .check :focus-visible, .contact :focus-visible,
 .tone-2 :focus-visible, .tone-4 :focus-visible { outline-color: var(--field-ink); }
-.biz :focus-visible { outline-color: var(--ink); }
+.biz :focus-visible, .file .flow :focus-visible { outline-color: var(--ink); }
 
 h1, h2, h3 { margin: 0; font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; }
 h1, h2 { font-size: var(--step-head); }
@@ -72,8 +85,11 @@ p { margin: 0 0 1rem; }
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 clamp(16px, 3vw, 28px); }
 main > section { padding: 120px 0; }
 
-/* Header: sits on the navy field and wraps onto two rows on very narrow screens */
-.top { background: var(--field); color: var(--field-ink); }
+/* Leather surfaces: the cover, the back pages and two of the folders */
+.top, .cs-field, .check, .contact, .tone-2 .file, .tone-2 .tab, .tone-4 .file, .tone-4 .tab { background-image: var(--grain); }
+
+/* Header: sits on the navy leather and wraps onto two rows on very narrow screens */
+.top { background-color: var(--field); color: var(--field-ink); }
 .top .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-height: 72px; padding-top: 12px; padding-bottom: 12px; }
 .brand { font-size: var(--step-lead); font-weight: 800; letter-spacing: -0.04em; text-decoration: none; white-space: nowrap; }
 .top nav { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-left: auto; font-size: var(--step-small); font-weight: 600; }
@@ -89,18 +105,19 @@ main > section { padding: 120px 0; }
 .theme-toggle:hover { background: var(--field-hover); }
 @media (max-width: 600px) { .top nav .opt { display: none; } .top nav { gap: 4px 16px; } }
 
-/* Buttons */
+/* Buttons: the primary one is brass, like the file's hardware */
 .actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px;
-  background: var(--paper-2); color: var(--ink); font-weight: 600; text-decoration: none; transition: background .15s;
+  background: var(--paper-2); color: var(--ink); font-weight: 600; text-decoration: none; transition: background .15s, transform .1s;
 }
 .btn:hover { background: var(--paper-3); }
-.btn.primary { background: var(--ink); color: var(--on-ink); }
-.btn.primary:hover { background: var(--ink-hover); }
+.btn.primary { background: var(--brass); color: var(--on-brass); }
+.btn.primary:hover { background: var(--brass-hover); }
+.btn:active, .chips button:active, .enclosed a:active, .next a:active { transform: translateY(1px); }
 
-/* A paper sheet on the navy field: homepage cover, case study and project heads */
-.cs-field { --side: 12px; --inner: clamp(20px, 5vw, 56px); background: var(--field); padding: 48px var(--side) 0; }
+/* A paper sheet on the leather: homepage cover, case study and project heads */
+.cs-field { --side: 12px; --inner: clamp(20px, 5vw, 56px); background-color: var(--field); padding: 48px var(--side) 0; }
 .cs-head {
   max-width: 900px; margin: 0 auto; background: var(--paper); padding: 48px var(--inner) 56px;
   clip-path: polygon(var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%, 0 var(--cut));
@@ -115,6 +132,22 @@ main > section { padding: 120px 0; }
 /* Same text edge as the sheet above it */
 .sheet-col { --side: 12px; --inner: clamp(20px, 5vw, 56px); max-width: calc(900px + 2 * var(--side)); margin: 0 auto; padding: 0 calc(var(--side) + var(--inner)); }
 
+/* Case study section tabs, like dividers in a binder; they stay at the top while reading */
+.sections {
+  position: sticky; top: 0; z-index: 5; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  margin-top: 40px; padding-top: 16px; background: var(--paper); border-bottom: 4px solid var(--field);
+}
+.sections a {
+  flex: none; padding: 10px 16px; border-radius: 10px 10px 0 0; background: var(--paper-3); color: var(--ink);
+  font-size: var(--step-small); font-weight: 600; text-decoration: none; transition: background .15s, color .15s;
+}
+.sections a:hover { background: var(--paper-4); }
+.sections a[aria-current] { background: var(--field); color: var(--field-ink); }
+/* The nav scrolls sideways, so a ring outside the tab would be cut off */
+.sections a:focus-visible { outline-offset: -5px; }
+.sections + .prose { padding-top: 40px; }
+.prose h2[id] { scroll-margin-top: 84px; }
+
 /* Case study and project body */
 .prose { max-width: 68ch; padding: 56px 0 72px; }
 .prose.wide { max-width: none; }
@@ -127,10 +160,19 @@ main > section { padding: 120px 0; }
 .prose li { margin-bottom: 8px; }
 .prose .actions { margin: 28px 0; }
 .note { font-size: var(--step-small); background: var(--paper-2); padding: 16px 20px; margin-top: 48px; }
-.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 20px 0 28px; padding: 20px; background: var(--paper-2); font-size: var(--step-small); font-weight: 600; }
-.flow span { padding: 8px 12px; background: var(--sheet); }
-.flow i { font-style: normal; color: var(--muted); }
-.next { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 0 0 96px; font-weight: 600; }
+/* Process diagrams: paper steps on a strip of leather, brass arrows */
+.flow {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 24px 0 32px; padding: 20px;
+  background: var(--field) var(--grain); color: var(--field-ink); font-size: var(--step-small); font-weight: 600;
+}
+.flow span { padding: 9px 13px; background: var(--sheet); color: var(--ink); }
+.flow i { font-style: normal; font-weight: 800; color: var(--brass); }
+.next { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; padding: 0 0 96px; }
+.next a {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 12px 12px 0 0;
+  background: var(--field) var(--grain); color: var(--field-ink); font-weight: 600; text-decoration: none; transition: background-color .15s, transform .1s;
+}
+.next a:hover { background-color: var(--field-2); }
 .video { aspect-ratio: 16 / 9; margin: 28px 0; background: var(--paper-2); }
 .video iframe { width: 100%; height: 100%; border: 0; display: block; }
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr)); gap: 8px; margin: 28px 0; align-items: start; }
@@ -148,6 +190,14 @@ main > section { padding: 120px 0; }
 .job h3 span { font-weight: 400; color: var(--muted); }
 .job ul { margin: 16px 0 0; padding-left: 20px; }
 .job li { margin-bottom: 8px; }
+/* The rest of a long list stays folded until asked for; works without JavaScript */
+.more { margin-top: 4px; }
+.more > summary { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; font-weight: 600; list-style: none; }
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary::before { content: "+"; display: inline-grid; place-items: center; width: 26px; height: 26px; background: var(--paper-3); font-weight: 800; }
+.more[open] > summary::before { content: "−"; }
+.more[open] .when-closed, .more:not([open]) .when-open { display: none; }
+.more > ul { margin-top: 4px; }
 .group { margin: 56px 0 20px; }
 .group:first-of-type { margin-top: 0; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 8px; }
@@ -170,7 +220,7 @@ main > section { padding: 120px 0; }
 .enclosed { margin-top: 56px; }
 .enclosed h2 { font-size: var(--step-lead); letter-spacing: -0.02em; line-height: 1.2; }
 .enclosed ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; padding: 0; }
-.enclosed a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; background: var(--paper-2); font-weight: 600; text-decoration: none; transition: background .15s; }
+.enclosed a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; background: var(--paper-2); font-weight: 600; text-decoration: none; transition: background .15s, transform .1s; }
 .enclosed a:hover { background: var(--paper-3); }
 
 /* Loose sheets: cover letter and skills */
@@ -188,42 +238,46 @@ main > section { padding: 120px 0; }
 .skills div { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; }
 .skills dt { font-weight: 600; }
 
-/* Case files: folders that stack as you scroll */
+/* Case files: kraft and leather folders that stack as you scroll */
 .files .section-head { margin-bottom: 40px; }
 /* Folders stack only where every one fits on screen; the homepage script adds .stack after measuring */
 @media (min-width: 761px) {
   .stack .folder { position: sticky; top: calc(var(--i, 0) * 52px); }
-  .stack .file { min-height: 62vh; }
 }
 .tab {
   display: inline-flex; align-items: center; height: 52px; padding: 0 34px; margin-left: var(--x, 0);
-  background: var(--c); color: var(--t); font-weight: 600; text-decoration: none;
+  background-color: var(--c); color: var(--t); font-weight: 600; text-decoration: none;
   clip-path: polygon(0 100%, 14px 0, calc(100% - 14px) 0, 100% 100%);
 }
 .tab:hover { text-decoration: underline; }
 /* The tab's own clip-path would cut an outline, so the ring goes round the label instead */
 .tab:focus-visible { outline: none; }
 .tab:focus-visible span { outline: 3px solid currentColor; outline-offset: 4px; }
-.file { background: var(--c); color: var(--t); padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: start; }
-.file h3 { font-size: var(--step-head); line-height: 0.95; letter-spacing: -0.045em; max-width: 14ch; margin-bottom: 24px; }
+.file { background-color: var(--c); color: var(--t); padding: clamp(20px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: start; }
+/* Leather folders are stitched round the edge */
+.tone-2 .file, .tone-4 .file { outline: 2px dashed var(--stitch); outline-offset: -12px; } /* taste-skill-ignore */
+/* Sized so the longest case title stays on two lines at every width */
+.file h3 { font-size: clamp(1.125rem, 0.5rem + 3.6vw, 2.75rem); line-height: 0.95; letter-spacing: -0.045em; margin-bottom: 24px; }
 .file p { max-width: 46ch; margin-bottom: 24px; }
 .file a { font-weight: 600; }
-.file dl { margin: 0; display: grid; gap: 16px; }
-.file dt { font-size: var(--step-small); font-weight: 600; opacity: 0.8; }
-.file dd { margin: 2px 0 0; }
-.tone-1 { --c: var(--paper-2); --t: var(--ink); }
+/* In a folder the diagram is a paper card and its steps run top to bottom */
+.file .flow { flex-direction: column; align-items: stretch; gap: 6px; margin: 0; padding: 16px; background: var(--sheet); color: var(--ink); }
+.file .flow span { background: var(--paper-2); }
+.file .flow i { align-self: center; color: var(--muted); line-height: 1; }
+.file .flow i:not(.or) { transform: rotate(90deg); }
+.tone-1 { --c: var(--paper-3); --t: var(--ink); }
 .tone-2 { --c: var(--field); --t: var(--field-ink); }
-.tone-3 { --c: var(--paper-3); --t: var(--ink); }
-.tone-4 { --c: var(--field-2); --t: var(--field-ink); }
-.tone-5 { --c: var(--paper-4); --t: var(--ink); }
+.tone-3 { --c: var(--paper-4); --t: var(--ink); }
+.tone-4 { --c: var(--tan); --t: var(--tan-ink); }
+.tone-5 { --c: var(--paper-2); --t: var(--ink); }
 
-/* Requirement check */
-.check { background: var(--field); color: var(--field-ink); }
+/* Requirement check: a stitched leather page */
+.check { background-color: var(--field); color: var(--field-ink); outline: 2px dashed var(--stitch); outline-offset: -14px; } /* taste-skill-ignore */
 .check .intro { max-width: 52ch; margin: 24px 0 40px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips button {
   min-height: 44px; padding: 0 16px; border: 0; background: var(--field-2); color: var(--field-ink);
-  font: inherit; font-size: var(--step-small); font-weight: 600; line-height: 1; cursor: pointer; transition: background .15s, color .15s;
+  font: inherit; font-size: var(--step-small); font-weight: 600; line-height: 1; cursor: pointer; transition: background .15s, color .15s, transform .1s;
 }
 .chips button:hover { background: var(--field-hover); }
 .chips button[aria-pressed="true"] { background: var(--field-ink); color: var(--field); }
@@ -232,18 +286,34 @@ main > section { padding: 120px 0; }
 .results b { font-weight: 600; }
 .check .empty { margin: 40px 0 0; }
 
-/* Contact: a business card on the field */
-.contact { background: var(--field); color: var(--field-ink); padding: 120px 0; }
+/* Contact: a business card on the tan leather back cover */
+.contact { background-color: var(--tan); color: var(--tan-ink); padding: 120px 0; outline: 2px dashed var(--stitch); outline-offset: -14px; } /* taste-skill-ignore */
 .contact .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 48px; align-items: end; }
 .contact h2 { font-size: var(--step-display); line-height: 0.88; letter-spacing: -0.05em; }
 .contact p { margin: 20px 0 0; max-width: 32ch; }
-.biz { background: var(--paper); color: var(--ink); padding: 32px 32px 0; display: grid; gap: 6px; }
+.biz { background: var(--sheet); color: var(--ink); padding: 32px 32px 0; display: grid; gap: 6px; }
 .biz strong { font-size: var(--step-lead); font-weight: 800; letter-spacing: -0.03em; }
 .biz .role { color: var(--muted); margin-bottom: 16px; }
 .biz a[href^="mailto:"] { overflow-wrap: anywhere; }
 .biz .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 4px 0 24px; }
 .biz .btn { margin: 0 -32px; min-height: 56px; }
 
+/* Motion: the cover sheet slides out of the file, then each part rises in as it reaches the screen.
+   Only with JavaScript and only when the visitor has not asked for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .cs-head { animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; }
+  .js .reveal { transition: opacity .6s ease, transform .6s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
+  .js .reveal:not(.in) { opacity: 0; transform: translateY(24px); }
+  .results li:not([hidden]) { animation: row-in .3s ease both; }
+}
+/* Movement only, no fading: if animations never run, the cover is still fully visible */
+@keyframes rise { from { transform: translateY(40px); } }
+@keyframes row-in { from { opacity: 0; transform: translateY(-6px); } }
+
+/* Tablets: the case text gets the folder's full width */
+@media (max-width: 1000px) {
+  .file { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+}
 @media (max-width: 760px) {
   main > section, .contact { padding: 96px 0; }
   .cs-head { padding-top: 32px; padding-bottom: 40px; }
@@ -253,10 +323,10 @@ main > section { padding: 120px 0; }
   .fields div, .skills div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .folder { margin-bottom: 12px; }
   .tab { margin-left: 0; height: 44px; padding: 0 24px; }
-  .file { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .results li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .contact .wrap { grid-template-columns: minmax(0, 1fr); }
   .job { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .sections a { padding: 10px 12px; }
 }
 /* Small phones: the photo moves above the title so the title keeps the full width */
 @media (max-width: 480px) {
@@ -266,27 +336,29 @@ main > section { padding: 120px 0; }
 
 /* Windows high contrast replaces background colours, so shapes get a system-colour edge */
 @media (forced-colors: active) {
-  .btn, .chips button, .theme-toggle, .enclosed a, .tab, .cs-head, .sheet, .file, .biz, .results li { border: 1px solid CanvasText; } /* taste-skill-ignore */
-  .chips button[aria-pressed="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; }
+  .btn, .chips button, .theme-toggle, .enclosed a, .tab, .cs-head, .sheet, .file, .biz, .results li,
+  .flow span, .sections a, .next a { border: 1px solid CanvasText; } /* taste-skill-ignore */
+  .chips button[aria-pressed="true"], .sections a[aria-current] { forced-color-adjust: none; background: Highlight; color: HighlightText; }
 }
 
-/* Print: ink on white whatever the theme, nothing interactive, every requirement row */
+/* Print: ink on white whatever the theme, no leather, nothing interactive, every requirement row */
 @media print {
   /* :root:root outranks the dark-theme selectors above */
   :root:root {
     color-scheme: light;
-    --field: #fff; --field-2: #fff; --field-hover: #fff; --field-ink: #14284b;
+    --field: #fff; --field-2: #fff; --field-hover: #fff; --field-ink: #18202e; --tan: #fff; --tan-ink: #18202e;
     --paper: #fff; --paper-2: #fff; --paper-3: #fff; --paper-4: #fff;
-    --sheet: #fff; --ink: #14284b; --muted: #4d5a70; --on-ink: #14284b; --ink-hover: #14284b;
+    --sheet: #fff; --ink: #18202e; --muted: #545b66; --on-ink: #18202e; --ink-hover: #18202e; --brass: #fff;
   }
-  .theme-toggle, .top nav, .chips, .enclosed, .check .empty, .video { display: none !important; }
+  * { background-image: none !important; animation: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .theme-toggle, .top nav, .chips, .enclosed, .check .empty, .video, .sections { display: none !important; }
   .results li[hidden] { display: grid !important; }
-  /* Its fill and its label share one colour in print; the label alone stays */
-  .btn.primary { background: none; }
+  .more > summary { display: none; }
+  .check, .contact, .file { outline: none; }
   main > section, .contact { padding: 32px 0; }
   .cs-field { padding-top: 0; }
   .cs-head, .sheet, .tab { clip-path: none; }
   .folder, .stack .folder { position: static; break-inside: avoid; }
-  .stack .file { min-height: 0; }
-  .job, .results li, .skills div, .fields div { break-inside: avoid; }
+  .job, .results li, .skills div, .fields div, .flow { break-inside: avoid; }
 }

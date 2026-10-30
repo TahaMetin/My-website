@@ -15,11 +15,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Taha Metin · Backend Software Engineer</title>
   <meta name="description" content="Backend software engineer with two years of fintech experience at Softtech, including commercial loan decisioning: Java, Spring Boot, microservices, REST/SOAP APIs, webMethods ESB integration, Oracle, ETL and production support." />
+  <link rel="canonical" href="https://tahametin.dev/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Taha Metin" />
+  <meta property="og:url" content="https://tahametin.dev/" />
+  <meta property="og:title" content="Taha Metin · Backend Software Engineer" />
+  <meta property="og:description" content="Backend software engineer with two years of fintech experience at Softtech, including commercial loan decisioning." />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image" content="https://tahametin.dev/assets/images/share.jpg" />
+  <meta property="og:image:alt" content="Muhammed Taha Metin, Backend Engineer" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/site.css?v=20261030" />
   <script src="assets/js/theme.js?v=20261030"></script>
+  <script src="assets/js/site.js?v=20261030" defer></script>
 </head>
 
 <body>
@@ -111,11 +123,7 @@
                 stored in Oracle or scored by the credit decision engine.</p>
               <a href="case-studies/integration-flow.html">Open the case file →</a>
             </div>
-            <dl>
-              <div><dt>Role</dt><dd>Software Engineer</dd></div>
-              <div><dt>Stack</dt><dd>webMethods Integration Server, Java, Spring Boot, Oracle</dd></div>
-              <div><dt>Interfaces</dt><dd>SOAP (WSDL, XSD), REST, sync and async</dd></div>
-            </dl>
+            <div class="flow" role="img" aria-label="New service to webMethods flow service on the ESB to Java backend, then to Oracle DB or the credit scoring decision engine"><span>New service</span><i>→</i><span>webMethods flow service (ESB)</span><i>→</i><span>Java / Spring Boot backend</span><i>→</i><span>Oracle DB</span><i class="or">or</i><span>Decision engine: credit scoring</span></div>
           </div>
         </div>
 
@@ -128,10 +136,7 @@
                 upgrades and Maven and Gradle dependency updates.</p>
               <a href="case-studies/java-21-migration.html">Open the case file →</a>
             </div>
-            <dl>
-              <div><dt>Role</dt><dd>Software Engineer</dd></div>
-              <div><dt>Stack</dt><dd>Java 21, Jakarta EE, Spring Boot, Maven, Gradle</dd></div>
-            </dl>
+            <div class="flow" role="img" aria-label="Java 8 or 17 services upgraded to Java 21 and Spring Boot, then the javax to jakarta move, dependency, compile and test fixes, and the pipeline to release"><span>Java 8 / 17 services</span><i>→</i><span>Java 21, Spring Boot upgrade</span><i>→</i><span>javax → jakarta</span><i>→</i><span>Dependencies, compile errors, tests</span><i>→</i><span>Azure DevOps → Digital.ai Release</span></div>
           </div>
         </div>
 
@@ -144,10 +149,7 @@
                 safely to production.</p>
               <a href="case-studies/production-support.html">Open the case file →</a>
             </div>
-            <dl>
-              <div><dt>Role</dt><dd>Software Engineer</dd></div>
-              <div><dt>Tools</dt><dd>OpenShift, Log4j2, Azure DevOps, Digital.ai Release</dd></div>
-            </dl>
+            <div class="flow" role="img" aria-label="Incident record to log analysis on OpenShift to fix or hotfix to CI/CD in Azure DevOps to Digital.ai Release to production"><span>Incident record</span><i>→</i><span>Log4j2 log analysis on OpenShift</span><i>→</i><span>Fix or hotfix</span><i>→</i><span>CI/CD in Azure DevOps</span><i>→</i><span>Digital.ai Release</span><i>→</i><span>Production</span></div>
           </div>
         </div>
 
@@ -159,10 +161,7 @@
               <p>Scheduled IBM DataStage ETL jobs that move customer data from enterprise databases into Oracle.</p>
               <a href="case-studies/data-migration.html">Open the case file →</a>
             </div>
-            <dl>
-              <div><dt>Role</dt><dd>Software Engineer</dd></div>
-              <div><dt>Stack</dt><dd>IBM DataStage, Oracle, batch scheduling</dd></div>
-            </dl>
+            <div class="flow" role="img" aria-label="Enterprise databases to DataStage ETL jobs to Oracle"><span>Enterprise databases</span><i>→</i><span>DataStage: extract · transform · load</span><i>→</i><span>Oracle DB</span></div>
           </div>
         </div>
 
@@ -175,10 +174,7 @@
                 development.</p>
               <a href="case-studies/code-quality.html">Open the case file →</a>
             </div>
-            <dl>
-              <div><dt>Role</dt><dd>Software Engineer</dd></div>
-              <div><dt>Testing</dt><dd>JUnit 5, Mockito, JaCoCo, SonarQube</dd></div>
-            </dl>
+            <div class="flow" role="img" aria-label="Unit tests with JUnit 5 and Mockito, coverage measured with JaCoCo, SonarQube findings resolved, then code review in the Scrum team"><span>Unit tests: JUnit 5, Mockito</span><i>→</i><span>Coverage: JaCoCo</span><i>→</i><span>SonarQube findings resolved</span><i>→</i><span>Code review in the Scrum team</span></div>
           </div>
         </div>
       </div>
@@ -223,13 +219,18 @@
               <li>Built webMethods flow services on Integration Server (ESB), routing data from new services to Java backends for persistence in Oracle DB or processing by the decision engine for commercial loan credit scoring and evaluation.</li>
               <li>Contributed to the Java 21 migration, upgrading multiple microservices from Java 8/17 to Java 21, including the javax → jakarta migration, Spring Boot upgrades and Maven/Gradle dependency updates.</li>
               <li>Built IBM DataStage ETL jobs with batch job scheduling to migrate customer data across enterprise databases into Oracle.</li>
-              <li>Added new features end to end, delivered bug fixes and hotfixes, and provided production support, resolving incident records within SLA.</li>
-              <li>Traced production issues via log analysis (Log4j2) on OpenShift.</li>
-              <li>Wrote unit tests with JUnit 5 and Mockito, raised test coverage measured by JaCoCo, and resolved SonarQube findings.</li>
-              <li>Supported releases and hotfixes up to production via CI/CD pipelines (Azure DevOps, Digital.ai Release), troubleshooting failed deployments with the release team.</li>
-              <li>Used AI-assisted development with a company-hosted OpenCode setup to speed up coding, test writing and debugging.</li>
-              <li>Worked in Scrum teams (sprint ceremonies, effort estimation, code review) with business analysts and test teams, using Jira and Confluence.</li>
             </ul>
+            <details class="more">
+              <summary><span class="when-closed">Show 6 more</span><span class="when-open">Show fewer</span></summary>
+              <ul>
+                <li>Added new features end to end, delivered bug fixes and hotfixes, and provided production support, resolving incident records within SLA.</li>
+                <li>Traced production issues via log analysis (Log4j2) on OpenShift.</li>
+                <li>Wrote unit tests with JUnit 5 and Mockito, raised test coverage measured by JaCoCo, and resolved SonarQube findings.</li>
+                <li>Supported releases and hotfixes up to production via CI/CD pipelines (Azure DevOps, Digital.ai Release), troubleshooting failed deployments with the release team.</li>
+                <li>Used AI-assisted development with a company-hosted OpenCode setup to speed up coding, test writing and debugging.</li>
+                <li>Worked in Scrum teams (sprint ceremonies, effort estimation, code review) with business analysts and test teams, using Jira and Confluence.</li>
+              </ul>
+            </details>
           </div>
         </div>
 
@@ -260,7 +261,7 @@
             <h3>B.Sc. Computer Engineering <span>· Kocaeli University</span></h3>
             <ul>
               <li>Graduation project: a Myo armband–controlled game for physiotherapy, built in the Natural Human-Computer Interaction Lab.</li>
-              <li>I started out building games: more than a dozen Unity projects, one published on Google Play, plus algorithm and NLP projects from university. <a href="archive.html">Browse the project archive →</a></li>
+              <li>I started out building games in Unity and Unreal, including one published on Google Play, plus algorithm and NLP projects from university. <a href="archive.html">Browse the project archive →</a></li>
             </ul>
           </div>
         </div>
@@ -304,7 +305,7 @@
           <a href="https://github.com/TahaMetin" target="_blank" rel="noopener">GitHub</a>
           <a href="assets/pdfs/taha_metin_cv.pdf" target="_blank" rel="noopener">View CV</a>
         </span>
-        <a class="btn" href="assets/pdfs/taha_metin_cv.pdf" download>Download CV</a>
+        <a class="btn primary" href="assets/pdfs/taha_metin_cv.pdf" download>Download CV</a>
       </div>
     </div>
   </footer>
