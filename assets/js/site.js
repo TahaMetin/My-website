@@ -3,7 +3,8 @@
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Parts rise in as they reach the screen. Without IntersectionObserver, or with reduced motion, everything just shows.
-  var parts = document.querySelectorAll('.letter, .files .section-head, .folder, .check h2, .check .intro, .chips, #experience .section-head, .job, #skills .sheet, .contact h2, .contact p, .biz, .prose .flow, .next');
+  // Stacking folders are left out: a half-faded folder sliding over another shows both at once
+  var parts = document.querySelectorAll('.letter, .files .section-head, .check h2, .check .intro, .chips, #experience .section-head, .job, #skills .sheet, .contact h2, .contact p, .biz, .prose .flow, .next');
   if (!reduce && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {

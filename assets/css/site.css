@@ -23,6 +23,7 @@
   --on-ink: #f8f6f1;
   --ink-hover: #26344d;
   --stitch: rgba(236, 230, 218, 0.42);
+  --photo-filter: none;
   /* Leather grain: generated noise, no image file */
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   --cut: 24px;
@@ -41,6 +42,8 @@
     --paper: #2a2620; --paper-2: #443d33; --paper-3: #4c4134; --paper-4: #584a3b;
     --sheet: #2f2a23; --ink: #ece5d8; --muted: #b3aa9a; --on-ink: #2a2620; --ink-hover: #ffffff;
     --stitch: rgba(236, 229, 216, 0.3);
+    /* The studio photo's white background would be the brightest thing on a dark page */
+    --photo-filter: brightness(0.88);
     --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .4 -.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   }
 }
@@ -51,6 +54,7 @@
   --paper: #2a2620; --paper-2: #443d33; --paper-3: #4c4134; --paper-4: #584a3b;
   --sheet: #2f2a23; --ink: #ece5d8; --muted: #b3aa9a; --on-ink: #2a2620; --ink-hover: #ffffff;
   --stitch: rgba(236, 229, 216, 0.3);
+  --photo-filter: brightness(0.88);
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .4 -.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
@@ -86,7 +90,9 @@ p { margin: 0 0 1rem; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 clamp(16px, 3vw, 28px); }
-main > section { padding: 120px 0; }
+main > section { padding: 96px 0; }
+/* A paper section followed by another paper section shares one gap instead of two */
+#letter, #experience { padding-bottom: 0; }
 
 /* Leather surfaces: the cover, the back pages and two of the folders */
 .top, .cs-field, .check, .contact, .tone-2 .file, .tone-2 .tab, .tone-4 .file, .tone-4 .tab { background-image: var(--grain); }
@@ -206,7 +212,7 @@ main > section { padding: 120px 0; }
 .cover h1 { font-size: var(--step-display); line-height: 0.88; letter-spacing: -0.05em; max-width: 9ch; margin: 0; }
 .cover-id { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: start; }
 .cover .name { font-size: var(--step-lead); font-weight: 600; letter-spacing: -0.02em; margin: 24px 0 0; }
-.photo { display: block; width: 132px; height: 176px; object-fit: cover; }
+.photo { display: block; width: 132px; height: 176px; object-fit: cover; padding: 5px; background: var(--paper-2); filter: var(--photo-filter); }
 .cover .actions { margin-top: 40px; }
 .fields { display: grid; gap: 14px; margin: 48px 0 0; }
 .fields div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; }
@@ -240,7 +246,7 @@ main > section { padding: 120px 0; }
   .stack .folder { position: sticky; top: calc(var(--i, 0) * 52px); }
   /* Each folder fills the screen below the tabs above it, so the next folder only slides over empty paper
      until the reader is past this one's text and link */
-  .stack .file { min-height: calc(100vh - (var(--i, 0) + 1) * 52px); }
+  .stack .file { min-height: calc(100vh - (var(--i, 0) + 2) * 52px); }
   .stack .folder:last-child .file { min-height: 0; }
 }
 .tab {
@@ -286,7 +292,7 @@ main > section { padding: 120px 0; }
 .check .empty { margin: 40px 0 0; }
 
 /* Contact: a business card on the tan leather back cover */
-.contact { background-color: var(--tan); color: var(--tan-ink); padding: 120px 0; outline: 2px dashed var(--stitch); outline-offset: -14px; } /* taste-skill-ignore */
+.contact { background-color: var(--tan); color: var(--tan-ink); padding: 96px 0; outline: 2px dashed var(--stitch); outline-offset: -14px; } /* taste-skill-ignore */
 .contact .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 48px; align-items: end; }
 .contact h2 { font-size: var(--step-display); line-height: 0.88; letter-spacing: -0.05em; }
 .contact p { margin: 20px 0 0; max-width: 32ch; }
@@ -314,11 +320,12 @@ main > section { padding: 120px 0; }
   .file { grid-template-columns: minmax(0, 1fr); gap: 28px; }
 }
 @media (max-width: 760px) {
-  main > section, .contact { padding: 96px 0; }
+  main > section, .contact { padding: 72px 0; }
+  #letter, #experience { padding-bottom: 0; }
   .cs-head { padding-top: 32px; padding-bottom: 40px; }
   .sheet-head { margin-bottom: 28px; }
   .cover-id { gap: 16px; }
-  .photo { width: 84px; height: 112px; }
+  .photo { width: 84px; height: 112px; padding: 4px; }
   .fields div, .skills div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .folder { margin-bottom: 12px; }
   .tab { margin-left: 0; height: 44px; padding: 0 24px; }
@@ -353,7 +360,7 @@ main > section { padding: 120px 0; }
     color-scheme: light;
     --field: #fff; --field-2: #fff; --field-hover: #fff; --field-ink: #18202e; --tan: #fff; --tan-ink: #18202e;
     --paper: #fff; --paper-2: #fff; --paper-3: #fff; --paper-4: #fff;
-    --sheet: #fff; --ink: #18202e; --muted: #545b66; --on-ink: #18202e; --ink-hover: #18202e; --brass: #fff;
+    --sheet: #fff; --ink: #18202e; --muted: #545b66; --on-ink: #18202e; --ink-hover: #18202e; --brass: #fff; --photo-filter: none;
   }
   * { background-image: none !important; animation: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
