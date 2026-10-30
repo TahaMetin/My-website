@@ -33,12 +33,13 @@
     chips.hidden = false;
   }
 
-  // Case files stack as you scroll. Each folder sticks one tab below the folder before it, or higher if it is too
-  // tall for that, so its bottom is on screen before the next folder covers it. Only the tab of a covered folder
-  // can show above the next one, never a cut-off slice of its text.
+  // Case files stack as you scroll. Each folder sticks one tab row below the folder before it, or whole rows higher
+  // if it is too tall for that, so its bottom is on screen before the next folder covers it. A covered folder shows
+  // only its whole tab above the next one: never a cut-off slice of its text or half a tab.
   var files = document.querySelector('.files');
   if (files) {
     var folders = files.querySelectorAll('.folder');
+    var phone = window.matchMedia('(max-width: 760px)');
     // The small viewport height stays put while a phone's address bar slides in and out, so folders do not jump
     var probe = document.createElement('div');
     probe.style.cssText = 'position:fixed;top:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none';
@@ -46,10 +47,18 @@
     files.classList.add('stack');
     var fit = function () {
       var screen = probe.offsetHeight, tab = folders[0].querySelector('.tab').offsetHeight, top = 0, bottom = 0;
+      var shown = []; // tabs still visible in the pile: { top, left, right }
       folders.forEach(function (f) { f.querySelector('.file').style.minHeight = ''; });
       folders.forEach(function (f, k) {
-        var file = f.querySelector('.file'), h = f.offsetHeight;
-        top = Math.min(k ? top + tab : 0, screen - h);
+        var file = f.querySelector('.file'), t = f.querySelector('.tab'), h = f.offsetHeight;
+        var left = t.offsetLeft, right = left + t.offsetWidth, prev = shown[shown.length - 1];
+        // On phones the tabs alternate sides, so every second folder shares the row above when the two tabs fit side by side
+        var share = phone.matches && k % 2 && (prev.right <= left || right <= prev.left);
+        top = Math.min(k ? top + (share ? 0 : tab) : 0, Math.floor((screen - h) / tab) * tab);
+        while (shown.some(function (s) { return s.top === top && s.left < right && left < s.right; })) top -= tab;
+        // Tabs in lower rows are now under this folder
+        shown = shown.filter(function (s) { return s.top <= top; });
+        shown.push({ top: top, left: left, right: right });
         // A folder shorter than the one under it gets empty paper added, so none of that one shows below it.
         // The last folder needs none: the section ends at its bottom, so the folders under it cannot reach lower.
         if (k < folders.length - 1 && top + h < bottom) {

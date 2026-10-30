@@ -367,7 +367,9 @@ main > section { padding: 96px 0; }
   .photo { width: 84px; height: 112px; padding: 4px; }
   .fields div, .skills div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .folder { margin-bottom: 12px; }
-  .tab { margin-left: 0; height: 44px; padding: 0 24px; }
+  .tab { margin-left: 0; height: 44px; padding: 0 16px; font-size: var(--step-small); }
+  /* Tabs alternate sides, so two stacked folders can show their tabs side by side in one row */
+  .folder:nth-child(even of .folder) .tab { display: flex; width: max-content; margin-left: auto; }
   .results li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .contact .wrap { grid-template-columns: minmax(0, 1fr); }
   .job { grid-template-columns: minmax(0, 1fr); gap: 6px; }
