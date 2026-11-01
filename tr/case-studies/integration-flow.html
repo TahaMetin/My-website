@@ -18,9 +18,9 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preload" href="../../assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="../../assets/fonts/schibsted-grotesk-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="../../assets/css/site.css?v=20261031" />
-  <script src="../../assets/js/theme.js?v=20261031"></script>
-  <script src="../../assets/js/site.js?v=20261031" defer></script>
+  <link rel="stylesheet" href="../../assets/css/site.css?v=20261101" />
+  <script src="../../assets/js/theme.js?v=20261101"></script>
+  <script src="../../assets/js/site.js?v=20261101" defer></script>
 </head>
 
 <body>
@@ -60,7 +60,7 @@
       <h2 id="context">Bağlam</h2>
       <p>Ticari kredi başvuruları, karar verilmeden önce kredi skorlama ve değerlendirmeden geçer. Bu veriyi üreten yeni servislerin mevcut Java backend'lere ve karar motoruna ulaşması gerekiyordu. Aralarında kurumsal servis yolu (ESB) olarak webMethods Integration Server duruyor.</p>
 
-      <div class="flow" role="img" aria-label="Yeni servisten ESB üzerindeki webMethods akış servisine, oradan Java backend'e, sonra Oracle veritabanına ya da kredi skorlama karar motoruna"><span>Yeni servis</span><i>→</i><span>webMethods akış servisi (ESB)</span><i>→</i><span>Java / Spring Boot backend</span><i>→</i><span>Oracle DB</span><i class="or">ya da</i><span>Karar motoru: kredi skorlama</span></div>
+      <div class="flow" role="img" aria-label="Yeni servisten ESB üzerindeki webMethods akış servisine, oradan Java backend'e, sonra kredi skorlama karar motoruna ve oradan Oracle veritabanına"><span>Yeni servis</span><i>→</i><span>webMethods akış servisi (ESB)</span><i>→</i><span>Java / Spring Boot backend</span><i>→</i><span>Karar motoru: kredi skorlama</span><i>→</i><span>Oracle DB</span></div>
 
       <h2 id="role">Rolüm</h2>
       <p>webMethods akış servislerini ve alıcı taraftaki Spring Boot servislerini geliştirdim. Yani verinin alınmasından kalıcı olarak yazılmasına ya da karar sürecine aktarılmasına kadar tüm yol üzerinde çalıştım.</p>

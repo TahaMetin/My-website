@@ -336,7 +336,7 @@ main > section { padding: 96px 0; }
 .file .flow { flex-direction: column; align-items: stretch; gap: 6px; margin: 0; padding: 16px; background: var(--sheet); color: var(--ink); }
 .file .flow span { background: var(--paper-2); }
 .file .flow i { align-self: center; color: var(--muted); line-height: 1; }
-.file .flow i:not(.or) { transform: rotate(90deg); }
+.file .flow i { transform: rotate(90deg); }
 .tone-1 { --c: var(--paper-3); --t: var(--ink); }
 .tone-2 { --c: var(--field); --t: var(--field-ink); }
 .tone-3 { --c: var(--paper-4); --t: var(--ink); }
@@ -369,6 +369,7 @@ main > section { padding: 96px 0; }
 .biz .role { color: var(--muted); margin-bottom: 16px; }
 .biz a[href^="mailto:"] { overflow-wrap: anywhere; }
 .biz .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 4px 0 24px; }
+.biz .copy { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
 .biz .btn { margin: 0 -32px; min-height: 56px; }
 
 /* Motion: the homepage cover sheet slides out of the file, then each part rises in as it reaches the screen.

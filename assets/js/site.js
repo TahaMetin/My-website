@@ -12,6 +12,23 @@
   gc.setAttribute('data-goatcounter', 'https://tahametin.goatcounter.com/count');
   document.head.appendChild(gc);
 
+  // Copy-email button: a mailto link opens nothing on a desktop without a mail app. Shown only where the clipboard works
+  var copy = document.querySelector('.copy');
+  if (copy && navigator.clipboard) {
+    var label = copy.textContent, reset;
+    copy.hidden = false;
+    copy.addEventListener('click', function () {
+      navigator.clipboard.writeText(copy.dataset.copy).then(function () {
+        copy.textContent = copy.dataset.done;
+        clearTimeout(reset);
+        reset = setTimeout(function () { copy.textContent = label; }, 2000);
+      }, function () {
+        // Clipboard refused (a browser setting): select the address so it can be copied by hand
+        getSelection().selectAllChildren(document.querySelector('.biz a[href^="mailto:"]'));
+      });
+    });
+  }
+
   // Requirement check on the homepage: each chip shows or hides its row; without JS the whole list stays visible
   var chips = document.querySelector('.chips');
   if (chips) {
