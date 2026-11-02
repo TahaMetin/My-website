@@ -208,7 +208,7 @@ main > section { padding: 96px 0; }
 /* site.js adds .more while tabs are hidden past the right edge: the last visible one fades out instead of being cut */
 .sections.more::after {
   content: ""; position: sticky; right: 0; flex: none; width: 32px; margin-left: -32px;
-  background: linear-gradient(to right, transparent, var(--paper)); pointer-events: none;
+  background: linear-gradient(to right, transparent, var(--paper)); pointer-events: none; /* taste-skill-ignore: scroll-edge cue, not decoration */
 }
 .sections + .prose { padding-top: 40px; }
 .prose h2[id] { scroll-margin-top: 84px; }
@@ -265,14 +265,17 @@ main > section { padding: 96px 0; }
 .card p { color: var(--muted); font-size: var(--step-small); margin: 0; }
 .card .thumb { display: block; width: 100%; height: auto; aspect-ratio: 570 / 394; object-fit: cover; margin-bottom: 16px; background: var(--paper-2); }
 
-/* Homepage cover sheet */
+/* Homepage cover sheet: as wide as the page's grid, so its edge lines up with the name in the header and every
+   section heading below, and the paper text inside lines up with the text in the sheets and folders */
+.cs-field:has(> .cover) { --side: clamp(16px, 3vw, 28px); }
+.cover { max-width: calc(var(--max) - 2 * var(--side)); }
 /* The title is also capped at 19% of its own column, so with large text beside the photo a word like "Mühendisi"
    stays whole. Browsers without container units keep the first font-size */
-.cover h1 { font-size: var(--step-display); font-size: min(var(--step-display), 19cqi); line-height: 0.88; letter-spacing: -0.05em; max-width: 9ch; margin: 0; }
+.cover h1 { --size: min(clamp(3.25rem, 1rem + 7.5vw, 7.75rem), 13.5vw); font-size: var(--size); font-size: min(var(--size), 19cqi); line-height: 0.88; letter-spacing: -0.05em; max-width: 9ch; margin: 0; }
 .cover-id { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: start; }
 .cover-id > div { container-type: inline-size; }
 .cover .name { font-size: var(--step-lead); font-weight: 600; letter-spacing: -0.02em; margin: 24px 0 0; }
-.photo { display: block; width: 132px; height: 176px; object-fit: cover; padding: 5px; background: var(--paper-2); filter: var(--photo-filter); }
+.photo { display: block; width: 180px; height: 240px; object-fit: cover; padding: 6px; background: var(--paper-2); filter: var(--photo-filter); }
 .cover .actions { margin-top: 40px; }
 .fields { display: grid; gap: 14px; margin: 48px 0 0; }
 .fields div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; }
@@ -284,9 +287,10 @@ main > section { padding: 96px 0; }
 .enclosed a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; background: var(--paper-2); font-weight: 600; text-decoration: none; transition: background .15s, transform .1s; }
 @media (hover: hover) and (pointer: fine) { .enclosed a:hover { background: var(--paper-3); } }
 
-/* Loose sheets: cover letter and skills */
+/* Loose sheets: cover letter and skills. They sit on the grid's left edge, and their text on the same inner edge
+   as the cover and the folders */
 .sheet {
-  max-width: 900px; margin: 0 auto; background: var(--sheet); padding: clamp(28px, 6vw, 64px);
+  background: var(--sheet); padding: clamp(28px, 6vw, 64px) clamp(20px, 5vw, 56px);
   clip-path: polygon(var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%, 0 var(--cut));
 }
 .sheet > h2 { margin-bottom: 40px; }
@@ -296,9 +300,11 @@ main > section { padding: 96px 0; }
 .sign { display: grid; gap: 2px; margin: 40px 0 0; }
 .sign strong { font-size: var(--step-lead); font-weight: 800; letter-spacing: -0.03em; }
 .sign span { color: var(--muted); font-size: var(--step-small); }
-.skills { display: grid; gap: 16px; margin: 0; }
-.skills div { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; }
-.skills dt { font-weight: 600; }
+/* The skills sheet spans the grid, so its groups fill it in two columns */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 36px 56px; margin: 0; }
+.skills div { display: grid; gap: 8px; align-content: start; }
+/* Group names set like the job titles, so they read as headings over the plain lists */
+.skills dt { font-size: var(--step-lead); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
 
 /* Case files: kraft and leather folders that stack as you scroll */
 .files .section-head { margin-bottom: 40px; }
@@ -403,7 +409,7 @@ main > section { padding: 96px 0; }
   .sheet-head { margin-bottom: 28px; }
   .cover-id { gap: 16px; }
   .photo { width: 84px; height: 112px; padding: 4px; }
-  .fields div, .skills div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .fields div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .folder { margin-bottom: 12px; }
   .tab { margin-left: 0; max-width: 100%; height: 44px; padding: 0 16px; font-size: var(--step-small); }
   /* Tabs alternate sides, so two stacked folders can show their tabs side by side in one row */
